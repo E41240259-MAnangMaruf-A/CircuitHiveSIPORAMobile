@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:layout_columnWeight="1"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Dokumen"
+            android:textSize="16sp"
+            android:textColor="#666666"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2.890"
+            android:textSize="24sp"
+            android:textColor="#1A237E"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Skripsi, tesis, paper"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvChange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+12% dari bulan lalu"
+            android:textSize="12sp"
+            android:textColor="#4CAF50"
+            android:drawablePadding="4dp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

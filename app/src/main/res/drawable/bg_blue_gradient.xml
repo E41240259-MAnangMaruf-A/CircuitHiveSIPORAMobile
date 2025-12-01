@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Gradasi warna: dari biru muda ke biru tua pekat -->
+    <gradient
+        android:startColor="#B3E5FC"
+        android:centerColor="#2196F3"
+        android:endColor="#001F5C"
+        android:angle="225" />
+
+
+    <!-- Sudut membulat -->
+    <corners android:radius="16dp" />
+
+    <!-- Padding opsional -->
+    <padding
+        android:left="1dp"
+        android:top="1dp"
+        android:right="1dp"
+        android:bottom="1dp" />
+</shape>

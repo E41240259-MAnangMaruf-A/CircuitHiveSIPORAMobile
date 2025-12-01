@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CourseCard">
+        <attr name="atr_title" format="string" />
+        <attr name="atr_subtitle" format="string" />
+        <attr name="atr_files" format="string" />
+        <attr name="atr_duration" format="string" />
+        <attr name="atr_bgColor" format="color" />
+        <attr name="atr_illustration" format="reference" />
+    </declare-styleable>
+
+</resources>

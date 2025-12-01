@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    android:backgroundTint="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 🔹 Judul dan Status -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvJudul"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Judul Dokumen"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selesai"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="#2E7D32"
+                android:background="@drawable/bg_status_green"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+
+        <!-- 🔹 Deskripsi -->
+        <TextView
+            android:id="@+id/tvDeskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi..."
+            android:textSize="13sp"
+            android:textColor="#666666"
+            android:layout_marginTop="4dp"
+            android:maxLines="2"
+            android:ellipsize="end" />
+
+
+        <!-- 🔹 Penulis + Tahun -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Uploader"
+                android:textSize="12sp"
+                android:textColor="#555555" />
+
+            <TextView
+                android:id="@+id/tvYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" • 2025"
+                android:textSize="12sp"
+                android:textColor="#777777"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+
+        <!-- 🔹 Label Chips (Kategori & Jenis Dokumen) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp">
+
+            <TextView
+                android:id="@+id/tvKategori"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kategori"
+                android:textSize="11sp"
+                android:textColor="#444"
+                android:background="@drawable/bg_chip_gray"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp" />
+
+            <TextView
+                android:id="@+id/tvJenis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PDF"
+                android:textSize="11sp"
+                android:textColor="#444"
+                android:background="@drawable/bg_chip_gray"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+
+
+        <!-- 🔹 Tanggal & Tombol -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:weightSum="1">
+
+            <!-- Kiri tanggal -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_calendar_gray"
+                    app:tint="#777"
+                    android:contentDescription="Tanggal" />
+
+                <TextView
+                    android:id="@+id/tvTanggal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24 September 2025"
+                    android:textSize="12sp"
+                    android:textColor="#777"
+                    android:layout_marginStart="6dp" />
+            </LinearLayout>
+
+            <!-- Kanan tombol aksi -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:gravity="end|center_vertical">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buka File"
+                    android:textSize="13sp"
+                    android:textColor="#333333"
+                    android:background="@drawable/bg_button_lightgray"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="6dp"
+                    android:stateListAnimator="@null" />
+
+                <ImageView
+                    android:id="@+id/btnHapus"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/ic_delete"
+                    app:tint="#888"
+                    android:contentDescription="Hapus" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

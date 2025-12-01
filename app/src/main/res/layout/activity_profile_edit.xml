@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FA">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_width="24dp"
+            android:layout_height="24dp" />
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_profile"
+            android:background="@drawable/bg_circle"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/etNama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Lengkap"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_white_rounded"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_white_rounded"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/etJurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jurusan"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_white_rounded"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/etProdi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Program Studi"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_white_rounded"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btnSimpan"
+            android:text="Simpan Perubahan"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#2196F3"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>

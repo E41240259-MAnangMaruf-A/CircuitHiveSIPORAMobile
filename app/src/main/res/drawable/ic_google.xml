@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- Warna dasar putih -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M0,0h48v48h-48z"
+        android:fillAlpha="0"/>
+
+    <!-- Logo G warna-warni -->
+    <path
+        android:fillColor="#EA4335"
+        android:pathData="M24,9.5c3.5,0,6.6,1.2,9.1,3.6l6.8-6.8C35.2,2.5,29.9,0,24,0C14.6,0,6.6,5.4,2.7,13.4l7.9,6.2C12.4,13,17.7,9.5,24,9.5z"/>
+    <path
+        android:fillColor="#34A853"
+        android:pathData="M46.1,24.5c0-1.6-0.1-2.7-0.4-3.9H24v8h12.7c-0.5,2.5-2.1,4.7-4.4,6.2l6.8,5.3C43.9,35.6,46.1,30.6,46.1,24.5z"/>
+    <path
+        android:fillColor="#4A90E2"
+        android:pathData="M10.6,28.7c-0.6-1.8-1-3.7-1-5.7s0.3-3.9,1-5.7l-7.9-6.2C0.9,15,0,19.4,0,23c0,3.6,0.9,8,2.7,11.9L10.6,28.7z"/>
+    <path
+        android:fillColor="#FBBC05"
+        android:pathData="M24,48c6.5,0,12-2.1,16-5.6l-6.8-5.3c-1.9,1.3-4.4,2.1-7.2,2.1c-6.3,0-11.6-4.2-13.5-10l-7.9,6.2C6.6,42.6,14.6,48,24,48z"/>
+</vector>

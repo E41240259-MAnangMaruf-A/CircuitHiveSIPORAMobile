@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F7FB">
+
+    <!-- Toolbar -->
+    <LinearLayout
+        android:id="@+id/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="12dp"
+        android:background="@android:color/transparent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="#000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Pencarian"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Konten Utama -->
+    <ScrollView
+        android:id="@+id/scroll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="72dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Search Bar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="12dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:id="@+id/icon_search"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_search_outline"
+                            android:layout_centerVertical="true" />
+
+                        <ImageView
+                            android:id="@+id/btn_clear_search"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_close"
+                            android:visibility="gone"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true" />
+
+                        <EditText
+                            android:id="@+id/et_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:layout_toStartOf="@id/btn_clear_search"
+                            android:layout_toEndOf="@id/icon_search"
+                            android:background="@android:color/transparent"
+                            android:hint="Cari dokumen, penulis, kata kunci"
+                            android:imeOptions="actionSearch"
+                            android:singleLine="true"
+                            android:gravity="center_vertical"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/btn_cari"
+                    android:layout_width="80dp"
+                    android:layout_height="48dp"
+                    android:text="Cari"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_button_rounded"
+                    app:backgroundTint="@null" />
+            </LinearLayout>
+
+            <!-- Pencarian Terakhir -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_clock"
+                        app:tint="#333333" />
+
+                    <TextView
+                        android:id="@+id/tv_recent_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:gravity="center_vertical"
+                        android:text="Pencarian Terakhir"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="#333333" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btn_clear_recent"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_delete"
+                    app:tint="#333333" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" />
+
+            <!-- Trending -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="16dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_trend" />
+
+                <TextView
+                    android:id="@+id/tv_trending_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Trending"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="#333333" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_trending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false" />
+
+            <!-- Tips Pencarian -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_tips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="100dp"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="#FFFBE6">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="horizontal"
+                    android:gravity="top">
+
+                    <ImageView
+                        android:id="@+id/ic_tip"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/ic_warning"
+                        app:tint="#F5A623" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_tips_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tips Pencarian"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:textColor="#222222" />
+
+                        <TextView
+                            android:id="@+id/tv_tips_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="• Gunakan kata kunci yang lebih spesifik\n• Coba sinonim jika tidak menemukan hasil\n• Gunakan filter untuk mempersempit pencarian"
+                            android:textSize="13.5sp"
+                            android:textColor="#555555"
+                            android:lineSpacingExtra="3dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:menu="@menu/bottom_nav_menu"
+        android:elevation="8dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

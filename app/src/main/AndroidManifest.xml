@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Internet access -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Optional storage permission -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/ic_polije"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_polije"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Sipora"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:targetApi="36">
+
+        <!-- Launcher -->
+        <activity
+            android:name=".rizalmhs.Register.OpeningActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Auth -->
+        <activity android:name=".rizalmhs.Register.RegisterActivity" android:exported="true" />
+        <activity android:name=".rizalmhs.Register.LoginActivity" android:exported="true" />
+
+        <!-- Main features -->
+        <activity android:name=".rizalmhs.Register.HomeActivity" android:exported="true" />
+        <activity android:name=".rizalmhs.Register.DashboardActivity" android:exported="true" />
+        <activity android:name=".rizalmhs.Register.UploadActivity" android:exported="true" />
+        <activity android:name=".rizalmhs.Register.SearchActivity" android:exported="true" />
+        <activity android:name=".rizalmhs.Register.DownloadActivity" android:exported="true" />
+
+        <activity
+            android:name=".rizalmhs.Register.BrowseActivity"
+            android:exported="true"
+            android:label="Browse Dokumen" />
+
+        <!-- NEW: WebView Preview Activity -->
+        <activity
+            android:name=".rizalmhs.Register.WebViewActivity"
+            android:exported="true"
+            android:label="Preview Dokumen" />
+
+        <!-- Onboarding -->
+        <activity android:name=".rizalmhs.Register.Opening01Activity" android:exported="false" />
+        <activity android:name=".rizalmhs.Register.Opening02Activity" android:exported="false" />
+        <activity android:name=".rizalmhs.Register.Opening03Activity" android:exported="false" />
+
+    </application>
+
+</manifest>

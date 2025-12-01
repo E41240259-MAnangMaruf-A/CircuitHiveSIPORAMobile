@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Tema & File Type -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvTema"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tema"
+                android:textColor="#2196F3"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvFileType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_file_type"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:text="PDF"
+                android:textColor="#666"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <!-- Judul -->
+        <TextView
+            android:id="@+id/tvJudul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Judul Dokumen"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Deskripsi -->
+        <TextView
+            android:id="@+id/tvDeskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:text="Deskripsi dokumen..."
+            android:textColor="#666"
+            android:textSize="14sp" />
+
+        <!-- Uploader & Download Count -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvUploader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Uploader"
+                android:textColor="#444"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvDownloadCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 Download"
+                android:textColor="#666"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <!-- Bidang (Jurusan) & Tahun Upload -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvJurusan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Teknologi Informasi"
+                android:textColor="#444"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvTahun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2025"
+                android:textColor="#666"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Tanggal + Tombol -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvTanggal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="2025-11-20"
+                android:textColor="#999"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnLihat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lihat"
+                    android:textColor="#2196F3"
+                    android:background="@android:color/transparent"
+                    style="?android:attr/borderlessButtonStyle" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="16dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:background="#DDD" />
+
+                <Button
+                    android:id="@+id/btnDownload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Download"
+                    android:textColor="#2196F3"
+                    android:background="@android:color/transparent"
+                    style="?android:attr/borderlessButtonStyle" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:background="@drawable/bg_status_publikasi"
+            android:text="Publikasi"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

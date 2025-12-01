@@ -1,0 +1,42 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Garis atas -->
+    <path
+        android:strokeColor="#333333"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M3,6h10" />
+
+    <!-- Titik kanan atas -->
+    <path
+        android:fillColor="#333333"
+        android:pathData="M18,6a1,1 0 1,0 2,0a1,1 0 1,0 -2,0" />
+
+    <!-- Garis tengah -->
+    <path
+        android:strokeColor="#333333"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M3,12h14" />
+
+    <!-- Titik kanan tengah -->
+    <path
+        android:fillColor="#333333"
+        android:pathData="M20,12a1,1 0 1,0 2,0a1,1 0 1,0 -2,0" />
+
+    <!-- Garis bawah -->
+    <path
+        android:strokeColor="#333333"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M3,18h7" />
+
+    <!-- Titik kanan bawah -->
+    <path
+        android:fillColor="#333333"
+        android:pathData="M14,18a1,1 0 1,0 2,0a1,1 0 1,0 -2,0" />
+</vector>

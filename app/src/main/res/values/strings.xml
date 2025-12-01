@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Sipora</string>
+    <string name="judul_dokumen_label">Judul Dokumen <font color='#FF0000'>*</font></string>
+    <string name="abstrak_label">Abstrak / Deskripsi <font color='#FF0000'>*</font></string>
+    <string name="jenis_dokumen_label">Jenis Dokumen <font color='#FF0000'>*</font></string>
+    <string name="tahun_label">Tahun <font color='#FF0000'>*</font></string>
+    <string name="jurusan_label">Jurusan <font color='#FF0000'>*</font></string>
+    <string name="prodi_label">Program Studi <font color='#FF0000'>*</font></string>
+    <string name="penulis_label">Penulis <font color='#FF0000'>*</font></string>
+    <string name="label_kata_kunci">Kata Kunci <font color='#FF0000'>*</font></string>
+    <string name="divisi_label">Divisi <font color='#FF0000'>*</font></string>
+    <string name="tema_label">Tema <font color='#FF0000'>*</font></string>
+
+
+    <!-- Prodi per Jurusan -->
+    <string-array name="prodi_teknologi_pertanian">
+        <item>Pilih Program Studi</item>
+        <item>D3 Teknologi Hasil Pertanian</item>
+        <item>D4 Teknologi Industri Pangan</item>
+        <item>D4 Teknologi Rekayasa Pangan</item>
+        <item>D4 Teknologi Rekayasa Bioproses</item>
+    </string-array>
+
+    <string-array name="prodi_peternakan">
+        <item>Pilih Program Studi</item>
+        <item>D3 Produksi Ternak</item>
+        <item>D3 Kesehatan Hewan</item>
+        <item>D4 Teknologi Pakan Ternak</item>
+        <item>D4 Manajemen Bisnis Unggas</item>
+    </string-array>
+
+    <string-array name="prodi_manajemen_agribisnis">
+        <item>Pilih Program Studi</item>
+        <item>D3 Agribisnis</item>
+        <item>D4 Manajemen Agroindustri</item>
+        <item>D4 Manajemen Pertanian Berkelanjutan</item>
+    </string-array>
+
+    <string-array name="prodi_teknik">
+        <item>Pilih Program Studi</item>
+        <item>D3 Teknik Energi Terbarukan</item>
+        <item>D3 Teknik Mesin Pertanian</item>
+        <item>D4 Teknologi Rekayasa Mekatronika</item>
+    </string-array>
+
+    <string-array name="prodi_kesehatan">
+        <item>Pilih Program Studi</item>
+        <item>D3 Gizi Klinik</item>
+        <item>D3 Keperawatan</item>
+        <item>D3 Kebidanan</item>
+    </string-array>
+
+    <string-array name="prodi_teknologi_informasi">
+        <item>Pilih Program Studi</item>
+        <item>D3 Manajemen Informatika</item>
+        <item>D3 Teknik Komputer</item>
+        <item>D4 Teknik Informatika</item>
+        <item>D4 Teknik Rekayasa Komputer</item>
+    </string-array>
+
+    <string-array name="prodi_bkp">
+        <item>Pilih Program Studi</item>
+        <item>D3 Bahasa Inggris</item>
+        <item>D4 Perhotelan</item>
+        <item>D3 Usaha Perjalanan Wisata</item>
+    </string-array>
+
+    <string-array name="role_array">
+        <item>Mahasiswa</item>
+    </string-array>
+
+</resources>
+

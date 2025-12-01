@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 🔹 Izinkan semua trafik HTTP non-HTTPS -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- 🔹 Izinkan koneksi ke server lokal kamu -->
+    <domain-config cleartextTrafficPermitted="true">
+        <!-- 💡 Ganti IP ini dengan IP Laragon kamu -->
+        <domain includeSubdomains="true">192.168.0.104</domain>
+    </domain-config>
+</network-security-config>

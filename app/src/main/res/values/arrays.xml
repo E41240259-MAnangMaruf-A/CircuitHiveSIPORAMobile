@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Jenis Dokumen -->
+    <string-array name="jenis_dokumen">
+        <item>Pilih Dokumen</item>
+        <item>Artikel</item>
+        <item>Skripsi</item>
+        <item>Tugas Akhir</item>
+        <item>Laporan</item>
+    </string-array>
+
+    <!-- Jurusan di Politeknik Negeri Jember -->
+    <string-array name="jurusan_list">
+        <item>Pilih Jurusan</item>
+        <item>Teknologi Pertanian</item>
+        <item>Peternakan</item>
+        <item>Manajemen Agribisnis</item>
+        <item>Teknik</item>
+        <item>Kesehatan</item>
+        <item>Teknologi Informasi</item>
+        <item>Bahasa, Komunikasi, dan Pariwisata</item>
+    </string-array>
+
+    <!-- Program Studi di Politeknik Negeri Jember -->
+    <string-array name="prodi_list">
+        <item>Pilih Program Studi</item>
+
+        <!-- Teknologi Pertanian -->
+        <item>D3 Teknologi Hasil Pertanian</item>
+        <item>D4 Teknologi Industri Pangan</item>
+        <item>D4 Teknologi Rekayasa Pangan</item>
+        <item>D4 Teknologi Rekayasa Bioproses</item>
+
+        <!-- Peternakan -->
+        <item>D3 Produksi Ternak</item>
+        <item>D3 Kesehatan Hewan</item>
+        <item>D4 Teknologi Pakan Ternak</item>
+        <item>D4 Manajemen Bisnis Unggas</item>
+
+        <!-- Manajemen Agribisnis -->
+        <item>D3 Agribisnis</item>
+        <item>D4 Manajemen Agroindustri</item>
+        <item>D4 Manajemen Pertanian Berkelanjutan</item>
+
+        <!-- Teknik -->
+        <item>D3 Teknik Energi Terbarukan</item>
+        <item>D3 Teknik Mesin Pertanian</item>
+        <item>D4 Teknologi Rekayasa Mekatronika</item>
+
+        <!-- Kesehatan -->
+        <item>D3 Gizi Klinik</item>
+        <item>D3 Keperawatan</item>
+        <item>D3 Kebidanan</item>
+
+        <!-- Teknologi Informasi -->
+        <item>D3 Manajemen Informatika</item>
+        <item>D3 Teknik Komputer</item>
+        <item>D4 Teknik Informatika</item>
+        <item>D4 Teknik Rekayasa Komputer</item>
+
+        <!-- Bahasa, Komunikasi, dan Pariwisata -->
+        <item>D3 Bahasa Inggris</item>
+        <item>D4 Perhotelan</item>
+        <item>D3 Usaha Perjalanan Wisata</item>
+    </string-array>
+
+    <!-- Tahun List -->
+    <string-array name="tahun_list">
+        <item>Pilih Tahun</item>
+        <item>2025</item>
+        <item>2024</item>
+        <item>2023</item>
+        <item>2022</item>
+        <item>2021</item>
+        <item>2020</item>
+        <item>2019</item>
+        <item>2018</item>
+        <item>2017</item>
+        <item>2016</item>
+        <item>2015</item>
+    </string-array>
+
+    <!-- Divisi List -->
+    <string-array name="divisi_list">
+        <item>Pilih Divisi</item>
+        <item>Divisi Akademik</item>
+        <item>Divisi Kemahasiswaan</item>
+        <item>Divisi Keuangan</item>
+        <item>Divisi SDM</item>
+        <item>Divisi Umum</item>
+        <item>Divisi Kerjasama</item>
+        <item>Divisi Sistem Informasi</item>
+    </string-array>
+
+    <!-- Tema List -->
+    <string-array name="tema_list">
+        <item>Pilih Tema</item>
+        <item>Pendidikan</item>
+        <item>Teknologi</item>
+        <item>Pertanian</item>
+        <item>Kesehatan</item>
+        <item>Ekonomi</item>
+        <item>Sosial</item>
+        <item>Budaya</item>
+        <item>Lingkungan</item>
+        <item>Hukum</item>
+        <item>Teknik</item>
+        <item>Fisika</item>
+        <item>Kimia</item>
+        <item>Biologi</item>
+        <item>Matematika</item>
+    </string-array>
+</resources>

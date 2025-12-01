@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FA"
+    android:fitsSystemWindows="true"
+    tools:context=".rizalmhs.Register.DashboardActivity">
+
+    <!-- Header atas -->
+    <LinearLayout
+        android:id="@+id/topHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/tvSipora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIPORA"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/icBell"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_notifications_24"
+            android:contentDescription="Notifikasi" />
+    </LinearLayout>
+
+    <!-- Konten utama scroll -->
+    <ScrollView
+        android:id="@+id/scrollContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/topHeader"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="16dp"
+            android:paddingBottom="100dp">
+
+            <!-- Header Card Biru -->
+            <LinearLayout
+                android:id="@+id/headerCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_blue_gradient"
+                android:clipToOutline="true"
+                android:elevation="8dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="18dp">
+
+                <TextView
+                    android:id="@+id/tvWelcome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Selamat Datang, Rizal!"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Portal Repository Akademik POLIJE"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnUpload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@android:color/white"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="8dp"
+                    android:text="+ Upload Dokumen"
+                    android:textAllCaps="false"
+                    android:textColor="#2196F3"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Kolom pencarian -->
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cari dokumen, penulis, kata kunci "
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:background="@drawable/bg_rounded_white"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="14sp" />
+
+            <!-- Judul Statistik -->
+            <TextView
+                android:id="@+id/tvStatistik"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Statistik"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:textColor="#000"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- 🔹 Statistik Dashboard -->
+            <LinearLayout
+                android:id="@+id/layoutStatistik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <GridLayout
+                    android:id="@+id/gridStatistik"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:alignmentMode="alignMargins"
+                    android:columnOrderPreserved="false"
+                    android:useDefaultMargins="true">
+
+                    <!-- 🔸 Kartu 1 -->
+                    <include
+                        layout="@layout/item_stat_card"
+                        android:id="@+id/statTotalDokumen"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp" />
+
+                    <!-- 🔸 Kartu 2 -->
+                    <include
+                        layout="@layout/item_stat_card"
+                        android:id="@+id/statDownload"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp" />
+
+                    <!-- 🔸 Kartu 3 -->
+                    <include
+                        layout="@layout/item_stat_card"
+                        android:id="@+id/statPengguna"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp" />
+
+                    <!-- 🔸 Kartu 4 -->
+                    <include
+                        layout="@layout/item_stat_card"
+                        android:id="@+id/statUpload"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp" />
+                </GridLayout>
+            </LinearLayout>
+
+            <!-- Dokumen Terbaru -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="24dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:id="@+id/tvDokumen"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Dokumen Terbaru"
+                    android:textStyle="bold"
+                    android:textSize="17sp"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/tvLihatSemua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lihat semua"
+                    android:textColor="#2196F3"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- RecyclerView Dokumen Terbaru -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerDokumen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="36dp"
+                tools:listitem="@layout/item_dokumen" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:elevation="8dp"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,36 @@
+<resources>
+    <color name="cream">#FFF5E4</color>
+    <color name="blue">#3F8CFF</color>
+    <color name="orange">#FF6B3D</color>
+    <color name="yellow">#FFCC4D</color>
+    <color name="green">#6DD27C</color>
+    <color name="red">#F0625D</color>
+    <color name="gray">#808080</color>
+    <color name="gray_light">#E0E0E0</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+        <color name="colorPrimary">#42A5F5</color>
+        <color name="colorAccent">#2196F3</color>
+        <color name="colorGrey">#808080</color>
+        <color name="colorLightGrey">#F5F5F5</color>
+        <color name="colorPrimaryBlue">#42A5F5</color>
+        <color name="primaryColor">#FF5722</color>
+        <color name="primaryDark">#E64A19</color>
+        <color name="accentColor">#FFC107</color>
+        <color name="textPrimary">#212121</color>
+        <color name="textSecondary">#757575</color>
+        <color name="backgroundColor">#FFFFFF</color>
+        <color name="grayLight">#F5F5F5</color>
+    <color name="blue_dark">#1565C0</color>
+    <color name="red_pdf">#E53935</color>
+    <color name="blue_word">#1E88E5</color>
+    <color name="green_image">#43A047</color>
+    <color name="gray_default">#757575</color>
+    <color name="colorSuccess">#00B050</color>
+    <color name="colorFailed">#FF3B30</color>
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorSecondaryText">#555555</color>
+    <color name="colorblue">#0066FF</color>
+    <color name="defaultText">#333333</color>
+</resources>
+

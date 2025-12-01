@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/bg_bottomsheet">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter Dokumen"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="10dp" />
+
+    <Spinner
+        android:id="@+id/spTema"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" />
+
+    <Spinner
+        android:id="@+id/spTahun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" />
+
+    <Spinner
+        android:id="@+id/spJurusan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/btnTerapkan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Terapkan"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#2196F3"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>

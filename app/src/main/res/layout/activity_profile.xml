@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- 🔙 Tombol Back -->
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="#000" />
+
+        <!-- Foto Profil -->
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_circle"
+            android:padding="10dp"
+            android:src="@drawable/ic_profile" />
+
+        <!-- Nama -->
+        <TextView
+            android:id="@+id/tvNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Pengguna"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="18dp"
+            android:layout_gravity="center" />
+
+        <!-- Email -->
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="email@student.polije.ac.id"
+            android:textColor="#666"
+            android:textSize="15sp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="14dp"
+            android:layout_gravity="center" />
+
+        <!-- Garis pembatas -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Data Profil -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Jurusan -->
+            <TextView
+                android:text="Jurusan"
+                android:textColor="#444"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvJurusan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Program Studi -->
+            <TextView
+                android:text="Program Studi"
+                android:textColor="#444"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvProdi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:layout_marginBottom="20dp" />
+
+        </LinearLayout>
+
+        <!-- Tombol Edit -->
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Edit Profil"
+            android:textStyle="bold"
+            android:backgroundTint="#2196F3"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="16dp" />
+
+        <!-- Tombol Logout -->
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Keluar Akun"
+            android:textStyle="bold"
+            android:backgroundTint="#D32F2F"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp" />
+
+    </LinearLayout>
+</ScrollView>

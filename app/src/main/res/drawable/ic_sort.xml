@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Panah ke atas -->
+    <path
+        android:fillColor="#757575"
+        android:pathData="M6,18V7H3l4-4 4,4H8v11z"/>
+
+    <!-- Garis panjang -->
+    <path
+        android:fillColor="#757575"
+        android:pathData="M12,6h8v2h-8z"/>
+
+    <!-- Garis sedang -->
+    <path
+        android:fillColor="#757575"
+        android:pathData="M12,11h6v2h-6z"/>
+
+    <!-- Garis pendek -->
+    <path
+        android:fillColor="#757575"
+        android:pathData="M12,16h4v2h-4z"/>
+</vector>

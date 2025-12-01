@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".rizalmhs.Register.HomeActivity">
+
+    <ImageView
+        android:id="@+id/opening_logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="156dp"
+        android:contentDescription="Logo"
+        android:src="@drawable/ic_polije"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/opening_bottom_container"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:background="@drawable/bg_bottom_container"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clipToOutline="true">
+
+        <TextView
+            android:id="@+id/opening_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIPORA"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/opening_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sistem Informasi POLIJE Repository Asset"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/opening_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <Button
+            android:id="@+id/opening_btn_get_started"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Started"
+            android:textColor="#2196F3"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_button_rounded_white"
+            android:layout_marginTop="16dp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="10dp"
+            app:layout_constraintTop_toBottomOf="@id/opening_subtitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_gravity="center_horizontal"
+            app:backgroundTint="@null" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

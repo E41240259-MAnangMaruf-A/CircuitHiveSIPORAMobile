@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8FA"
+    tools:context=".rizalmhs.Register.UploadActivity">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Tombol Back -->
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="#000" />
+
+        <!-- Judul di samping Back -->
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Upload Dokumen"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#000" />
+
+        <!-- Spacer untuk dorong icon bell ke kanan -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Icon Bell -->
+        <ImageView
+            android:id="@+id/iconBell"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_notifications_24"
+            app:tint="#000" />
+    </LinearLayout>
+
+    <!-- Scroll utama -->
+    <ScrollView
+        android:id="@+id/scrollUpload"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="100dp">
+
+            <!-- Card Upload File Utama -->
+            <LinearLayout
+                android:id="@+id/cardUploadUtama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_white_card"
+                android:elevation="3dp"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_file_upload"
+                        app:tint="#000"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload File Utama"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" *"
+                        android:textColor="#F44336"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Area pilih file utama -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_dashed_box"
+                    android:paddingVertical="16dp"
+                    android:paddingHorizontal="8dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_cloud_upload_outline"
+                        app:tint="#757575" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Klik untuk upload atau drag &amp; drop file"
+                        android:textSize="13sp"
+                        android:textColor="#333"
+                        android:layout_marginTop="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PDF, DOC, DOCX (Maksimal 10MB)"
+                        android:textSize="12sp"
+                        android:textColor="#888"
+                        android:layout_marginTop="2dp" />
+
+                    <Button
+                        android:id="@+id/btnPilihFileUtama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih File"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:backgroundTint="#2196F3"
+                        android:layout_marginTop="12dp"
+                        android:paddingHorizontal="24dp"
+                        android:paddingVertical="8dp" />
+
+                    <!-- Info file utama terpilih -->
+                    <LinearLayout
+                        android:id="@+id/layoutFileInfoUtama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:background="@drawable/bg_file_info"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/iconFileUtama"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_insert_drive_file"
+                            app:tint="@color/gray_default"
+                            android:layout_marginEnd="6dp" />
+
+                        <TextView
+                            android:id="@+id/tvNamaFileUtama"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Belum ada file dipilih"
+                            android:textSize="13sp"
+                            android:textColor="#000" />
+
+                        <TextView
+                            android:id="@+id/tvUkuranFileUtama"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 KB"
+                            android:textSize="12sp"
+                            android:textColor="#666"
+                            android:layout_marginEnd="8dp" />
+
+                        <ImageView
+                            android:id="@+id/btnHapusFileUtama"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_close"
+                            app:tint="#F44336"
+                            android:contentDescription="Hapus file"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Card Upload Turnitin (Opsional) -->
+            <LinearLayout
+                android:id="@+id/cardUploadTurnitin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_white_card"
+                android:elevation="3dp"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_shield_check"
+                        app:tint="#000"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload Turnitin (Opsional)"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <!-- Area pilih file Turnitin -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_dashed_box"
+                    android:paddingVertical="16dp"
+                    android:paddingHorizontal="8dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_cloud_upload_outline"
+                        app:tint="#757575" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Upload laporan Turnitin (jika ada)"
+                        android:textSize="13sp"
+                        android:textColor="#333"
+                        android:layout_marginTop="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PDF (Maksimal 5MB)"
+                        android:textSize="12sp"
+                        android:textColor="#888"
+                        android:layout_marginTop="2dp" />
+
+                    <Button
+                        android:id="@+id/btnPilihFileTurnitin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih File Turnitin"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:backgroundTint="#2196F3"
+                        android:layout_marginTop="12dp"
+                        android:paddingHorizontal="24dp"
+                        android:paddingVertical="8dp" />
+
+                    <!-- Info file Turnitin terpilih -->
+                    <LinearLayout
+                        android:id="@+id/layoutFileInfoTurnitin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:background="@drawable/bg_file_info"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/iconFileTurnitin"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_insert_drive_file"
+                            app:tint="#4CAF50"
+                            android:layout_marginEnd="6dp" />
+
+                        <TextView
+                            android:id="@+id/tvNamaFileTurnitin"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Belum ada file dipilih"
+                            android:textSize="13sp"
+                            android:textColor="#000" />
+
+                        <TextView
+                            android:id="@+id/tvUkuranFileTurnitin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 KB"
+                            android:textSize="12sp"
+                            android:textColor="#666"
+                            android:layout_marginEnd="8dp" />
+
+                        <ImageView
+                            android:id="@+id/btnHapusFileTurnitin"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_close"
+                            app:tint="#F44336"
+                            android:contentDescription="Hapus file"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <!-- Skor Turnitin Opsional -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="16dp"
+                        android:padding="12dp"
+                        android:background="#E8F5E9"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/ic_shield_check"
+                                app:tint="#4CAF50"
+                                android:layout_marginEnd="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Skor Turnitin"
+                                android:textStyle="bold"
+                                android:textColor="#2E7D32"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" OPSIONAL"
+                                android:textStyle="bold"
+                                android:textColor="#757575"
+                                android:textSize="12sp"
+                                android:layout_marginStart="4dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Persentase Kemiripan"
+                            android:textColor="#333333"
+                            android:textSize="13sp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginStart="28dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginStart="28dp">
+
+                            <EditText
+                                android:id="@+id/etPresentaseKemiripan"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:hint="0"
+                                android:inputType="number"
+                                android:maxLength="3"
+                                android:background="@drawable/bg_input_field"
+                                android:padding="8dp"
+                                android:textSize="13sp"
+                                android:textAlignment="center" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="%"
+                                android:textColor="#333333"
+                                android:textSize="13sp"
+                                android:layout_marginStart="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="(0-100%)"
+                                android:textColor="#757575"
+                                android:textSize="12sp"
+                                android:layout_marginStart="12dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Masukkan skor presentase kemiripan dari Turnitin (0-100%). Kosongkan jika tidak ada."
+                            android:textColor="#757575"
+                            android:textSize="11sp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginStart="28dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Informasi Dokumen -->
+            <LinearLayout
+                android:id="@+id/cardInfoDokumen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_white_card"
+                android:elevation="3dp"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informasi Dokumen"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/judul_dokumen_label"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="4dp" />
+
+                <EditText
+                    android:id="@+id/etJudul"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Masukkan judul lengkap dokumen"
+                    android:background="@drawable/bg_input_field"
+                    android:padding="10dp"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/abstrak_label"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="4dp" />
+
+                <EditText
+                    android:id="@+id/etAbstrak"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Masukkan Abstrak atau deskripsi singkat dokumen"
+                    android:background="@drawable/bg_input_field"
+                    android:padding="10dp"
+                    android:gravity="top"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="10dp" />
+
+                <!-- Jenis Dokumen & Tahun (ubah tahun ke spinner) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/jenis_dokumen_label"
+                            android:textColor="#000000"
+                            android:textSize="13sp"
+                            android:layout_marginBottom="4dp" />
+
+                        <!-- Spinner Jenis Dokumen -->
+                        <Spinner
+                            android:id="@+id/spinnerJenis"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_spinner"
+                            android:popupBackground="@drawable/bg_spinner_dropdown"
+                            android:entries="@array/jenis_dokumen"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="8dp"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tahun_label"
+                            android:textColor="#000000"
+                            android:textSize="13sp"
+                            android:layout_marginBottom="4dp" />
+
+                        <!-- Spinner Tahun -->
+                        <Spinner
+                            android:id="@+id/spinnerTahun"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_spinner"
+                            android:popupBackground="@drawable/bg_spinner_dropdown"
+                            android:entries="@array/tahun_list"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="8dp"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Divisi & Tema -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginBottom="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/divisi_label"
+                            android:textColor="#000000"
+                            android:textSize="13sp"
+                            android:layout_marginBottom="4dp" />
+
+                        <!-- Spinner Divisi -->
+                        <Spinner
+                            android:id="@+id/spinnerDivisi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_spinner"
+                            android:popupBackground="@drawable/bg_spinner_dropdown"
+                            android:entries="@array/divisi_list"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="8dp"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tema_label"
+                            android:textColor="#000000"
+                            android:textSize="13sp"
+                            android:layout_marginBottom="4dp" />
+
+                        <!-- Spinner Tema -->
+                        <Spinner
+                            android:id="@+id/spinnerTema"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_spinner"
+                            android:popupBackground="@drawable/bg_spinner_dropdown"
+                            android:entries="@array/tema_list"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="8dp"
+                            android:textSize="14sp"
+                            android:fontFamily="sans-serif" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jurusan_label"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="4dp" />
+
+                <Spinner
+                    android:id="@+id/spinnerJurusan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_spinner"
+                    android:popupBackground="@drawable/bg_spinner_dropdown"
+                    android:entries="@array/jurusan_list"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="8dp"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif" />
+
+                <!-- Tambah jarak antara Jurusan dan Program Studi -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/prodi_label"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:layout_marginBottom="4dp" />
+
+                <!-- Spinner Prodi -->
+                <Spinner
+                    android:id="@+id/spinnerProdi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_spinner"
+                    android:popupBackground="@drawable/bg_spinner_dropdown"
+                    android:entries="@array/prodi_list"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="8dp"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif" />
+
+                <!-- Tambah jarak antara Program Studi dan Kata Kunci -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+                <!-- Kata Kunci -->
+                <TextView
+                    android:id="@+id/tv_kata_kunci"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#333333"
+                    android:text="@string/label_kata_kunci" />
+
+                <EditText
+                    android:id="@+id/etKataKunci"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Kata Kunci 1"
+                    android:background="@drawable/bg_input_field"
+                    android:padding="10dp"
+                    android:textSize="13sp" />
+
+                <!-- Perhatian -->
+                <LinearLayout
+                    android:id="@+id/cardPerhatian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:background="#FFF9C4"
+                    android:padding="12dp"
+                    android:elevation="2dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_warning"
+                        app:tint="#F44336" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Perhatian"
+                            android:textStyle="bold"
+                            android:textColor="#D32F2F"
+                            android:textSize="14sp"
+                            android:layout_marginBottom="4dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="• Pastikan dokumen tidak mengandung informasi yang bersifat rahasia\n• Dokumen akan melalui proses review sebelum dipublikasikan\n• Anda akan mendapat notifikasi status review melalui email"
+                            android:textColor="#000000"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Tombol Upload Dokumen -->
+                <Button
+                    android:id="@+id/btnUploadDokumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Upload Dokumen"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:backgroundTint="#2196F3"
+                    android:drawableStart="@drawable/ic_file_upload"
+                    android:drawablePadding="8dp"
+                    android:paddingVertical="12dp"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:elevation="8dp"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
