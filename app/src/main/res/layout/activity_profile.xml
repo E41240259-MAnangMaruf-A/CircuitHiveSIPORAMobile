@@ -1,125 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#F7F8FA">
+
+    <!-- HEADER FIXED (tidak ikut scroll) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="12dp">
+
+        <!-- ICON BACK -->
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:clickable="true"
+            android:contentDescription="Kembali"
+            android:focusable="true"
+            android:padding="12dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/tvProfileTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text="Profil Saya"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="24dp"
+        android:gravity="center_horizontal"
+        android:paddingBottom="40dp">
 
-        <!-- 🔙 Tombol Back -->
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_arrow_back"
-            android:tint="#000" />
-
-        <!-- Foto Profil -->
-        <ImageView
+        <!-- FOTO PROFIL BULAT -->
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgProfile"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bg_circle"
-            android:padding="10dp"
-            android:src="@drawable/ic_profile" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_profile"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#DDDDDD" />
 
-        <!-- Nama -->
-        <TextView
-            android:id="@+id/tvNama"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nama Pengguna"
-            android:textColor="#000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="18dp"
-            android:layout_gravity="center" />
-
-        <!-- Email -->
-        <TextView
-            android:id="@+id/tvEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="email@student.polije.ac.id"
-            android:textColor="#666"
-            android:textSize="15sp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="14dp"
-            android:layout_gravity="center" />
-
-        <!-- Garis pembatas -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E0E0E0"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp" />
-
-        <!-- Data Profil -->
+        <!-- CONTAINER UNTUK TOMBOL FOTO -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
 
-            <!-- Jurusan -->
-            <TextView
-                android:text="Jurusan"
-                android:textColor="#444"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/tvJurusan"
+            <!-- PILIH FOTO DARI GALERI -->
+            <Button
+                android:id="@+id/btnGantiFoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
-                android:textColor="#000"
-                android:textSize="15sp"
-                android:layout_marginBottom="16dp" />
+                android:background="@android:color/transparent"
+                android:text="Galeri"
+                android:textColor="#2196F3"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="8dp" />
 
-            <!-- Program Studi -->
-            <TextView
-                android:text="Program Studi"
-                android:textColor="#444"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/tvProdi"
+            <!-- AMBIL FOTO (KAMERA) -->
+            <Button
+                android:id="@+id/btnAmbilFoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
-                android:textColor="#000"
-                android:textSize="15sp"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginStart="16dp"
+                android:background="@android:color/transparent"
+                android:text="Kamera"
+                android:textColor="#4CAF50"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="8dp" />
 
         </LinearLayout>
 
-        <!-- Tombol Edit -->
-        <Button
-            android:id="@+id/btnEdit"
+        <!-- FORM INPUT -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="Edit Profil"
-            android:textStyle="bold"
-            android:backgroundTint="#2196F3"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="16dp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp">
 
-        <!-- Tombol Logout -->
+            <!-- NAMA -->
+            <EditText
+                android:id="@+id/etNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_rounded_white"
+                android:hint="Nama Lengkap"
+                android:padding="16dp" />
+
+            <!-- USERNAME -->
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_rounded_white"
+                android:hint="Username"
+                android:padding="16dp" />
+
+            <!-- EMAIL -->
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_rounded_white"
+                android:enabled="false"
+                android:hint="Email"
+                android:padding="16dp" />
+
+            <!-- NIM -->
+            <EditText
+                android:id="@+id/etNIM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_rounded_white"
+                android:enabled="false"
+                android:hint="NIM"
+                android:padding="16dp" />
+
+        </LinearLayout>
+
+        <!-- CONTAINER TOMBOL AKSI DI TENGAH -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+        android:layout_marginTop="32dp">
+
+        <!-- SIMPAN -->
+        <Button
+            android:id="@+id/btnSimpan"
+            android:layout_width="200dp"
+            android:layout_height="56dp"
+            android:backgroundTint="#2196F3"
+            android:text="Simpan Perubahan"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- LOGOUT -->
         <Button
             android:id="@+id/btnLogout"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="Keluar Akun"
-            android:textStyle="bold"
-            android:backgroundTint="#D32F2F"
+            android:layout_width="200dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#F44336"
+            android:text="Logout"
             android:textColor="@android:color/white"
-            android:layout_marginTop="10dp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
-</ScrollView>
+
+    <!-- SPACER BOTTOM -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+</LinearLayout>
+</LinearLayout>

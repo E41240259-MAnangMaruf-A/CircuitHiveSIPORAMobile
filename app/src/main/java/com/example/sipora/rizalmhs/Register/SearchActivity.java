@@ -55,11 +55,15 @@ public class SearchActivity extends AppCompatActivity {
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 50);
             return insets;
         });
 
-        // INIT
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.bottom_nav), (view, insets2) -> {
+            view.setPadding(0, 0, 0, 0);
+            return insets2;
+        });
+
         etSearch = findViewById(R.id.et_search);
         btnCari = findViewById(R.id.btn_cari);
         rvRecent = findViewById(R.id.rv_recent);
@@ -137,12 +141,10 @@ public class SearchActivity extends AppCompatActivity {
             clearRecentFromServer();
         });
 
-        // BACK BUTTON
-        btnBack.setOnClickListener(v -> {
-            Intent i = new Intent(getApplicationContext(), BrowseActivity.class);
-            i.putExtra("from", "search");
-            startActivity(i);
+        findViewById(R.id.btnBack).setOnClickListener(v -> {
+            startActivity(new Intent(this, BrowseActivity.class));
             finish();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_nav);
@@ -169,7 +171,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private void loadRecentTrending() {
 
-        String url = "http://192.168.1.45/SIPORAWEB/backend/sipora_api/recent_search.php?user_id="
+        String url = "http://192.168.0.180/SIPORAWEB/frontend/recent_search.php?user_id="
                 + UserSession.getUserId(this);
 
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -190,10 +192,6 @@ public class SearchActivity extends AppCompatActivity {
                         rvRecent.setAdapter(recentAdapter);
 
                         rvRecent.setVisibility(View.VISIBLE);
-
-                        // ================================
-                        // 🔥 HANDLE CLICK DAN DELETE ITEM
-                        // ================================
                         recentAdapter.setOnRecentClickListener(new RecentAdapter.OnRecentClickListener() {
                             @Override
                             public void onItemClick(String q) {
@@ -247,7 +245,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void deleteRecentItem(String keyword) {
-        String url = "http://192.168.1.45/SIPORAWEB/backend/sipora_api/delete_recent_item.php";
+        String url = "http://192.168.0.180/SIPORAWEB/frontend/delete_recent_item.php";
 
         StringRequest req = new StringRequest(
                 Request.Method.POST,
@@ -268,7 +266,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void saveRecent(String keyword) {
-        String url = "http://192.168.1.45/SIPORAWEB/backend/sipora_api/save_recent.php";
+        String url = "http://192.168.0.180/SIPORAWEB/frontend/save_recent.php";
 
         Log.d("DEBUG_SEARCH", "Saving keyword: " + keyword);
 
@@ -291,7 +289,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void clearRecentFromServer() {
-        String url = "http://192.168.1.45/SIPORAWEB/backend/sipora_api/clear_recent.php"
+        String url = "http://192.168.0.180/SIPORAWEB/frontend/clear_recent.php"
                 + "?user_id=" + UserSession.getUserId(this);
 
         Volley.newRequestQueue(this).add(new JsonObjectRequest(Request.Method.GET, url, null,
@@ -300,7 +298,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private void searchDocument(String query) {
 
-        String url = "http://192.168.1.45/SIPORAWEB/backend/sipora_api/search.php?q=" + query;
+        String url = "http://192.168.0.180/SIPORAWEB/frontend/search_mobile.php?q=" + query;
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -309,9 +307,16 @@ public class SearchActivity extends AppCompatActivity {
                     resultList.clear();
 
                     try {
-                        if (!response.getString("status").equals("success"))
-                            return;
+                        if (!response.getString("status").equals("success")) {
 
+                            sendNotif(
+                                    "Pencarian Dokumen",
+                                    "Pencarian '" + query + "' tidak ditemukan."
+                            );
+
+                            rvResult.setVisibility(View.GONE);
+                            return;
+                        }
                         JSONArray arr = response.getJSONArray("documents");
 
                         for (int i = 0; i < arr.length(); i++) {
@@ -327,12 +332,10 @@ public class SearchActivity extends AppCompatActivity {
                             item.fileUrl = o.getString("file_url");
                             item.abstrak = o.getString("abstrak");
                             item.tahun = o.getString("tahun");
-
                             item.uploader = o.getString("uploader_name");
                             item.nama_tema = o.getString("nama_tema");
                             item.nama_jurusan = o.getString("nama_jurusan");
                             item.nama_prodi = o.getString("nama_prodi");
-
                             item.download_count = o.getInt("download_count");
 
                             resultList.add(item);
@@ -340,6 +343,11 @@ public class SearchActivity extends AppCompatActivity {
 
                         rvResult.setVisibility(View.VISIBLE);
                         resultAdapter.notifyDataSetChanged();
+
+                        sendNotif(
+                                "Pencarian Dokumen",
+                                "Anda mencari dokumen dengan kata kunci: '" + query + "'"
+                        );
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -350,4 +358,28 @@ public class SearchActivity extends AppCompatActivity {
 
         queue.add(req);
     }
+
+
+    private void sendNotif(String judul, String isi) {
+        String url = "http://192.168.0.180/SIPORAWEB/frontend/insert_notifikasi.php";
+
+        StringRequest req = new StringRequest(
+                Request.Method.POST,
+                url,
+                r -> Log.d("NOTIF", "Terkirim: " + r),
+                e -> Log.e("NOTIF", "Error: " + e.toString())
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> p = new HashMap<>();
+                p.put("user_id", String.valueOf(UserSession.getUserId(SearchActivity.this)));
+                p.put("judul", judul);
+                p.put("isi", isi);
+                return p;
+            }
+        };
+
+        Volley.newRequestQueue(this).add(req);
+    }
+
 }

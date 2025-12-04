@@ -28,15 +28,13 @@ public class OpeningActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private OpeningAdapter adapter;
 
-    private static final String BASE_URL = "http://192.168.1.191/sipora_api/";
+    private static final String BASE_URL = "http://192.168.0.180/sipora_api/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_opening_main);
-
-        // ===== ViewPager intro =====
         viewPager = findViewById(R.id.viewPager);
         adapter = new OpeningAdapter(this);
         viewPager.setAdapter(adapter);
@@ -50,7 +48,6 @@ public class OpeningActivity extends AppCompatActivity {
         });
     }
 
-    // ===== Update indikator (titik slider) =====
     private void updateIndicators(int position) {
         for (int i = 0; i < adapter.getItemCount(); i++) {
             View page = viewPager.findViewWithTag("page_" + i);
@@ -69,16 +66,12 @@ public class OpeningActivity extends AppCompatActivity {
             }
         }
     }
-
-    // ===== Tombol daftar manual =====
     public void goToRegister(View view) {
         startActivity(new Intent(OpeningActivity.this, RegisterActivity.class));
     }
-
-    // ===== Tombol login manual ke server Laragon =====
     public void loginToServer(View view) {
-        String email = "example@polije.ac.id"; // contoh data (nanti bisa ambil dari EditText)
-        String password = "123456";            // contoh data (nanti ganti input user)
+        String email = "example@polije.ac.id";
+        String password = "123456";
 
         String url = BASE_URL + "login.php";
 

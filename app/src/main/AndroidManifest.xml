@@ -2,14 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Internet access -->
+    <!-- ============ PERMISSIONS ============ -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <!-- Optional storage permission -->
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
+    <!-- Untuk Android 10+ -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" android:maxSdkVersion="32" />
 
+    <!-- Kamera opsional -->
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+
+    <!-- ============ APPLICATION ============ -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,42 +32,90 @@
         android:networkSecurityConfig="@xml/network_security_config"
         tools:targetApi="36">
 
-        <!-- Launcher -->
+        <!-- File Provider -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- ============ ACTIVITIES ============ -->
+
+        <!-- Opening / Splash -->
         <activity
             android:name=".rizalmhs.Register.OpeningActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- Auth -->
-        <activity android:name=".rizalmhs.Register.RegisterActivity" android:exported="true" />
-        <activity android:name=".rizalmhs.Register.LoginActivity" android:exported="true" />
+        <!-- Login -->
+        <activity
+            android:name=".rizalmhs.Register.LoginActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
 
-        <!-- Main features -->
-        <activity android:name=".rizalmhs.Register.HomeActivity" android:exported="true" />
-        <activity android:name=".rizalmhs.Register.DashboardActivity" android:exported="true" />
-        <activity android:name=".rizalmhs.Register.UploadActivity" android:exported="true" />
-        <activity android:name=".rizalmhs.Register.SearchActivity" android:exported="true" />
-        <activity android:name=".rizalmhs.Register.DownloadActivity" android:exported="true" />
+        <!-- Register -->
+        <activity
+            android:name=".rizalmhs.Register.RegisterActivity"
+            android:exported="true"
+            android:label="Registrasi"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sipora" />
 
+        <!-- Dashboard -->
+        <activity
+            android:name=".rizalmhs.Register.DashboardActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <!-- Profile -->
+        <activity
+            android:name=".rizalmhs.Register.ProfileActivity"
+            android:exported="false"
+            android:label="Profil Pengguna"
+            android:screenOrientation="portrait" />
+
+        <!-- Notification -->
+        <activity
+            android:name=".rizalmhs.Register.NotificationActivity"
+            android:exported="false"
+            android:label="Notifikasi"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Sipora" />
+
+        <!-- Bottom Navigation -->
         <activity
             android:name=".rizalmhs.Register.BrowseActivity"
-            android:exported="true"
+            android:exported="false"
+            android:screenOrientation="portrait"
             android:label="Browse Dokumen" />
 
-        <!-- NEW: WebView Preview Activity -->
         <activity
-            android:name=".rizalmhs.Register.WebViewActivity"
-            android:exported="true"
-            android:label="Preview Dokumen" />
+            android:name=".rizalmhs.Register.DownloadActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:label="Download" />
 
-        <!-- Onboarding -->
-        <activity android:name=".rizalmhs.Register.Opening01Activity" android:exported="false" />
-        <activity android:name=".rizalmhs.Register.Opening02Activity" android:exported="false" />
-        <activity android:name=".rizalmhs.Register.Opening03Activity" android:exported="false" />
+        <activity
+            android:name=".rizalmhs.Register.UploadActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:label="Upload Dokumen" />
+
+        <!-- Search -->
+        <activity
+            android:name=".rizalmhs.Register.SearchActivity"
+            android:exported="false"
+            android:label="Pencarian"
+            android:screenOrientation="portrait" />
 
     </application>
 

@@ -31,10 +31,25 @@ public class DokumenAdapter extends RecyclerView.Adapter<DokumenAdapter.ViewHold
     private boolean isGridMode = false;
     private RequestQueue requestQueue;
 
-    public DokumenAdapter(Context context, List<DokumenModel> dokumenList) {
+    public interface OnItemClickListener {
+        void onDownloadClick(DokumenModel dokumen);
+        void onViewClick(DokumenModel dokumen);
+    }
+
+    private OnItemClickListener listener;
+
+    public DokumenAdapter(Context context, List<DokumenModel> dokumenList, OnItemClickListener listener) {
         this.context = context;
         this.dokumenList = dokumenList;
+        this.listener = listener;
         this.requestQueue = Volley.newRequestQueue(context);
+    }
+
+    public DokumenAdapter(Context context, List<DokumenModel> dokumenList) {
+        this(context, dokumenList, null);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
     }
 
     public void setGridMode(boolean gridMode) {
@@ -50,7 +65,6 @@ public class DokumenAdapter extends RecyclerView.Adapter<DokumenAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view;
 
         if (viewType == 1) {
@@ -66,10 +80,9 @@ public class DokumenAdapter extends RecyclerView.Adapter<DokumenAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         DokumenModel doc = dokumenList.get(position);
 
-        if (holder.viewType == 0) {
+        if (holder.viewType == 0) { // List mode
             holder.tvJudul.setText(doc.getJudul());
             holder.tvDeskripsi.setText(doc.getAbstrak());
             holder.tvUploader.setText(doc.getUploaderName());
@@ -82,25 +95,46 @@ public class DokumenAdapter extends RecyclerView.Adapter<DokumenAdapter.ViewHold
         } else {
             holder.tvTemaGrid.setText(doc.getTema());
             holder.tvJudulGrid.setText(doc.getJudul());
-            holder.tvInfoGrid.setText(doc.getUploaderName() + " - " + doc.getJurusan());
+            holder.tvInfoGrid.setText(doc.getUploaderName() + " • " + doc.getJurusan());
             holder.tvTahunGrid.setText(doc.getTahun() + " • " + doc.getDownloadCount() + " download");
         }
+        setupClickListeners(holder, doc);
+    }
 
-        // Tombol lihat
+    private void setupClickListeners(ViewHolder holder, DokumenModel doc) {
         if (holder.btnLihat != null) {
-            holder.btnLihat.setOnClickListener(v -> openFile(doc));
-        }
-
-        // Tombol download
-        if (holder.btnDownload != null) {
-            holder.btnDownload.setOnClickListener(v -> {
-
-                Log.d("DOWNLOAD_CLICK", "User menekan tombol download");
-
-                openFile(doc);
-                logDownload(doc.getId(), UserSession.getUserId(context));
+            holder.btnLihat.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onViewClick(doc);
+                } else {
+                    openFile(doc);
+                }
             });
         }
+
+        if (holder.btnDownload != null) {
+            holder.btnDownload.setOnClickListener(v -> {
+                Log.d("DOKUMEN_ADAPTER", "Tombol Download ditekan: " + doc.getJudul());
+
+                if (listener != null) {
+                    listener.onDownloadClick(doc);
+                } else {
+                    downloadDokumen(doc);
+                }
+            });
+        }
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onViewClick(doc); // Tanpa notifikasi
+            }
+        });
+    }
+    private void downloadDokumen(DokumenModel doc) {
+        Log.d("DOKUMEN_ADAPTER", "Download dengan notifikasi: " + doc.getJudul());
+        NotificationUtils.sendDownloadNotification(context, doc.getJudul());
+        logDownload(doc.getId(), UserSession.getUserId(context));
+        openFile(doc);
+        Toast.makeText(context, "Mengunduh: " + doc.getJudul(), Toast.LENGTH_SHORT).show();
     }
 
     private void openFile(DokumenModel doc) {
@@ -114,8 +148,7 @@ public class DokumenAdapter extends RecyclerView.Adapter<DokumenAdapter.ViewHold
     }
 
     private void logDownload(int dokumenId, int userId) {
-
-        String url = "http://192.168.1.45/SIPORAWEB/backend/sipora_api/log_download.php";
+        String url = "http://192.168.0.180/SIPORAWEB/frontend/log_download.php";
 
         Log.d("DOWNLOAD_LOG", "Kirim log: dokumen_id=" + dokumenId + ", user_id=" + userId);
 
@@ -141,7 +174,6 @@ public class DokumenAdapter extends RecyclerView.Adapter<DokumenAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView tvTema, tvJudul, tvDeskripsi, tvUploader, tvJurusan, tvTahun, tvTanggal, tvDownloadCount;
         Button btnDownload, btnLihat;
 

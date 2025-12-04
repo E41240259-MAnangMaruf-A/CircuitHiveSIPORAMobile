@@ -34,8 +34,6 @@ public class WebViewActivity extends AppCompatActivity {
         settings.setDisplayZoomControls(false);
 
         webView.setWebViewClient(new WebViewClient());
-
-        // GOOGLE DOCS VIEWER LOCAL TRICK
         String finalUrl =
                 "https://docs.google.com/gview?embedded=true&url=" + fileUrl;
 

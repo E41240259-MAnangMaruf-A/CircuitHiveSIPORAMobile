@@ -9,8 +9,15 @@ import android.widget.Button;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.HashMap;
+import java.util.Map;
+import android.util.Log;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,10 +45,10 @@ public class BrowseActivity extends AppCompatActivity {
 
     private TextView textJumlahDokumen;
 
-    private static final String URL_BROWSE = "http://192.168.1.45/SIPORAWEB/backend/sipora_api/browse.php";
-    private static final String URL_TEMA = "http://192.168.1.45/SIPORAWEB/backend/sipora_api/get_tema.php";
-    private static final String URL_TAHUN = "http://192.168.1.45/SIPORAWEB/backend/sipora_api/get_tahun.php";
-    private static final String URL_JURUSAN = "http://192.168.1.45/SIPORAWEB/backend/sipora_api/get_jurusan.php";
+    private static final String URL_BROWSE = "http://192.168.0.180/SIPORAWEB/frontend/browse.php";
+    private static final String URL_TEMA = "http://192.168.0.180/SIPORAWEB/frontend/get_tema.php";
+    private static final String URL_TAHUN = "http://192.168.0.180/SIPORAWEB/frontend/get_tahun.php";
+    private static final String URL_JURUSAN = "http://192.168.0.180/SIPORAWEB/frontend/get_jurusan.php";
 
     String currentTema = "";
     String currentTahun = "";
@@ -52,6 +59,23 @@ public class BrowseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browse);
+        EdgeToEdge.enable(this);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 50);
+            return insets;
+        });
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.bottomNavigation), (view, insets2) -> {
+            view.setPadding(0, 0, 0, 0);
+            return insets2;
+        });
+
+        findViewById(R.id.btnBack).setOnClickListener(v -> {
+            startActivity(new Intent(this, UploadActivity.class));
+            finish();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        });
 
         recyclerViewDokumen = findViewById(R.id.listViewDokumen);
         textJumlahDokumen = findViewById(R.id.textJumlahDokumen); // <<< DISINI FIX 100%
@@ -264,7 +288,7 @@ public class BrowseActivity extends AppCompatActivity {
             if (id == R.id.nav_download) {
                 startActivity(new Intent(this, DownloadActivity.class));
                 overridePendingTransition(0, 0);
-                finish();
+                 finish();
                 return true;
             }
 
@@ -277,4 +301,24 @@ public class BrowseActivity extends AppCompatActivity {
         super.onResume();
         loadDocuments();
     }
+    public void sendNotif(int userId, String judul, String isi) {
+        String url = "http://10.10.4.51/SIPORAWEB/frontend/insert_notifikasi.php";
+
+        StringRequest req = new StringRequest(Request.Method.POST, url,
+                r -> Log.d("NOTIF","Sent"),
+                e -> Log.e("NOTIF","Error "+e.toString())
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> p = new HashMap<>();
+                p.put("user_id", String.valueOf(userId));
+                p.put("judul", judul);
+                p.put("isi", isi);
+                return p;
+            }
+        };
+
+        Volley.newRequestQueue(this).add(req);
+    }
+
 }

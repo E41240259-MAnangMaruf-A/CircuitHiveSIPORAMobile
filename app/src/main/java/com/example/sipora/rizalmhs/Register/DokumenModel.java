@@ -26,7 +26,7 @@ public class DokumenModel {
         this.status = status;
         this.fileUrl = fileUrl;
         this.downloadCount = 0;
-        this.tahun = extractYearFromDate(tanggal); // Auto extract tahun dari tanggal
+        this.tahun = extractYearFromDate(tanggal);
     }
 
     public DokumenModel(int id, String judul, String deskripsi, String tanggal,
@@ -46,7 +46,7 @@ public class DokumenModel {
         this.prodi = prodi;
         this.downloadCount = downloadCount;
         this.abstrak = abstrak;
-        this.tahun = extractYearFromDate(tanggal); // Auto extract tahun dari tanggal
+        this.tahun = extractYearFromDate(tanggal);
     }
 
     public DokumenModel(int id, String judul, String deskripsi, String tanggal,

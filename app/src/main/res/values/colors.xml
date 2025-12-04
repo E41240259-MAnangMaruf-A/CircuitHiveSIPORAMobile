@@ -32,5 +32,9 @@
     <color name="colorSecondaryText">#555555</color>
     <color name="colorblue">#0066FF</color>
     <color name="defaultText">#333333</color>
+    <color name="tab_active_bg">#DDEBFF</color>
+    <color name="tab_active_text">#0056D2</color>
+    <color name="tab_inactive_bg">#EEE</color>
+    <color name="tab_inactive_text">#444</color>
 </resources>
 

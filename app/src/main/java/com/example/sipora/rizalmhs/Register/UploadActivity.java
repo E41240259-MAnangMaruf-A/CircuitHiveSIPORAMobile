@@ -12,18 +12,16 @@ import android.text.InputType;
 import android.util.Log;
 import android.widget.*;
 import android.view.View;
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
+import com.android.volley.toolbox.Volley;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.android.volley.Request;
-import com.android.volley.toolbox.Volley;
 import com.example.sipora.R;
-import com.example.sipora.rizalmhs.Register.UserSession;
-import com.example.sipora.rizalmhs.Register.VolleyMultipartRequest;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.ByteArrayOutputStream;
@@ -37,7 +35,7 @@ public class UploadActivity extends AppCompatActivity {
     private static final int FILE_TURNITIN_REQUEST_CODE = 101;
 
     private TextView tvNamaFileUtama, tvUkuranFileUtama;
-    private ImageView iconFileUtama, btnBack;
+    private ImageView iconFileUtama, btnBack, iconProfile;
     private Button btnPilihFileUtama, btnUploadDokumen;
     private Uri fileUriUtama;
 
@@ -77,19 +75,15 @@ public class UploadActivity extends AppCompatActivity {
         btnPilihFileUtama = findViewById(R.id.btnPilihFileUtama);
         btnUploadDokumen = findViewById(R.id.btnUploadDokumen);
         btnBack = findViewById(R.id.btnBack);
-
         tvNamaFileTurnitin = findViewById(R.id.tvNamaFileTurnitin);
         tvUkuranFileTurnitin = findViewById(R.id.tvUkuranFileTurnitin);
         iconFileTurnitin = findViewById(R.id.iconFileTurnitin);
         btnPilihFileTurnitin = findViewById(R.id.btnPilihFileTurnitin);
-
         etPresentaseKemiripan = findViewById(R.id.etPresentaseKemiripan);
-
         etPresentaseKemiripan.setInputType(InputType.TYPE_CLASS_NUMBER);
         etPresentaseKemiripan.setFilters(new InputFilter[] {
-                new InputFilter.LengthFilter(3) // Maksimal 3 digit (0-100)
+                new InputFilter.LengthFilter(3)
         });
-
         spinnerJenis = findViewById(R.id.spinnerJenis);
         spinnerJurusan = findViewById(R.id.spinnerJurusan);
         spinnerProdi = findViewById(R.id.spinnerProdi);
@@ -103,7 +97,6 @@ public class UploadActivity extends AppCompatActivity {
         setupSpinner(spinnerTahun, R.array.tahun_list);
         setupSpinner(spinnerDivisi, R.array.divisi_list);
         setupSpinner(spinnerTema, R.array.tema_list);
-
         spinnerJurusan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -115,28 +108,25 @@ public class UploadActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {}
         });
 
-        btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-            startActivity(intent);
-            finish();
-        });
 
+        findViewById(R.id.btnBack).setOnClickListener(v -> {
+            startActivity(new Intent(this, DashboardActivity.class));
+            finish();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        });
         btnPilihFileUtama.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             intent.setType("*/*");
             startActivityForResult(Intent.createChooser(intent, "Pilih File Utama"), FILE_UTAMA_REQUEST_CODE);
         });
-
         btnPilihFileTurnitin.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
             intent.setType("*/*");
             startActivityForResult(Intent.createChooser(intent, "Pilih File Turnitin"), FILE_TURNITIN_REQUEST_CODE);
         });
-
         btnUploadDokumen.setOnClickListener(v -> uploadToServer());
-
         bottomNavigation.setSelectedItemId(R.id.nav_upload);
         bottomNavigation.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -146,7 +136,6 @@ public class UploadActivity extends AppCompatActivity {
             else if (id == R.id.nav_browse) intent = new Intent(this, BrowseActivity.class);
             else if (id == R.id.nav_search) intent = new Intent(this, SearchActivity.class);
             else if (id == R.id.nav_download) intent = new Intent(this, DownloadActivity.class);
-
 
             if (intent != null) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -170,11 +159,12 @@ public class UploadActivity extends AppCompatActivity {
         java.util.List<String> filteredProdi = new java.util.ArrayList<>();
         filteredProdi.add("Pilih Program Studi");
 
+        Log.d("FILTER_PRODI", "Filtering untuk jurusan: " + jurusan);
         for (String prodi : allProdi) {
             if (prodi.startsWith("Pilih")) continue;
 
             if ((jurusan.equals("Teknologi Informasi") &&
-                    (prodi.equals("Teknik Informatika") || prodi.equals("Management Informatika") ||
+                    (prodi.equals("Teknik Informatika") || prodi.equals("Manajemen Informatika") ||
                             prodi.equals("Teknik Komputer") || prodi.equals("Teknologi Rekayasa Komputer"))) ||
 
                     (jurusan.equals("Produksi Pertanian") &&
@@ -187,11 +177,11 @@ public class UploadActivity extends AppCompatActivity {
                                     prodi.equals("Teknologi Rekayasa Pangan"))) ||
 
                     (jurusan.equals("Peternakan") &&
-                            (prodi.equals("Produksi Ternak") || prodi.equals("Management Bisnis Unggas") ||
+                            (prodi.equals("Produksi Ternak") || prodi.equals("Manajemen Bisnis Unggas") ||
                                     prodi.equals("Teknologi Pakan Ternak"))) ||
 
                     (jurusan.equals("Manajemen Agribisnis") &&
-                            (prodi.equals("Management Agribisnis") || prodi.equals("Management Agroindustri") ||
+                            (prodi.equals("Manajemen Agribisnis") || prodi.equals("Manajemen Agroindustri") ||
                                     prodi.equals("Pascasarjana Agribisnis"))) ||
 
                     (jurusan.equals("Bahasa, Komunikasi dan Pariwisata") &&
@@ -199,27 +189,32 @@ public class UploadActivity extends AppCompatActivity {
                                     prodi.equals("Produksi Media Kampus Bondowoso"))) ||
 
                     (jurusan.equals("Kesehatan") &&
-                            (prodi.equals("Management Informasi Kesehatan") || prodi.equals("Gizi Klinik") ||
+                            (prodi.equals("Manajemen Informasi Kesehatan") || prodi.equals("Gizi Klinik") ||
                                     prodi.equals("Promosi Kesehatan"))) ||
-
-                    jurusan.equals("Teknik") || jurusan.equals("Bisnis") || jurusan.equals("Kelas Internasional")) {
+                    (jurusan.equals("Teknik") &&
+                            (prodi.equals("Teknik Mesin Otomotif") || prodi.equals("Teknik Energi Terbarukan") ||
+                                    prodi.equals("Teknologi Rekayasa Mekatronika"))) ||
+                    (jurusan.equals("Bisnis") &&
+                            (prodi.equals("Akuntansi Sektor Publik") || prodi.equals("Manajemen Pemasaran Internasional") ||
+                                    prodi.equals("Bisnis Digital (Kampus Bondowoso)"))) ||
+                    (jurusan.equals("Kelas Internasional") &&
+                            (prodi.equals("Manajemen Informatika") || prodi.equals("Teknik Informatika") ||
+                                    prodi.equals("Manajemen Agroindustri")))) {
 
                 filteredProdi.add(prodi);
+                Log.d("FILTER_PRODI", "Prodi ditambahkan: " + prodi);
             }
         }
-
         if (filteredProdi.size() == 1) {
-            for (String prodi : allProdi) {
-                if (!prodi.startsWith("Pilih")) {
-                    filteredProdi.add(prodi);
-                }
-            }
+            Log.d("FILTER_PRODI", "Tidak ada prodi yang cocok untuk jurusan: " + jurusan);
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, R.layout.spinner_item, filteredProdi);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinnerProdi.setAdapter(adapter);
+
+        Log.d("FILTER_PRODI", "Total prodi setelah filter: " + (filteredProdi.size() - 1));
     }
 
     @Override
@@ -246,7 +241,9 @@ public class UploadActivity extends AppCompatActivity {
                     tvNamaFileTurnitin.setText(fileName);
                     tvUkuranFileTurnitin.setText(sizeString);
                     findViewById(R.id.layoutFileInfoTurnitin).setVisibility(View.VISIBLE);
-                    layoutPresentaseKemiripan.setVisibility(View.VISIBLE);
+                    if (layoutPresentaseKemiripan != null) {
+                        layoutPresentaseKemiripan.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         }
@@ -326,10 +323,8 @@ public class UploadActivity extends AppCompatActivity {
             Toast.makeText(this, "Isi semua kolom terlebih dahulu!", Toast.LENGTH_SHORT).show();
             return;
         }
-
         String turnitinPercentageStr = etPresentaseKemiripan.getText().toString().trim();
         int turnitinPercentage = 0;
-
         if (!turnitinPercentageStr.isEmpty()) {
             try {
                 turnitinPercentage = Integer.parseInt(turnitinPercentageStr);
@@ -342,7 +337,6 @@ public class UploadActivity extends AppCompatActivity {
                 return;
             }
         }
-
         String jenisDokumen = spinnerJenis.getSelectedItem().toString();
         String tahun = spinnerTahun.getSelectedItem().toString();
         String jurusan = spinnerJurusan.getSelectedItem().toString();
@@ -368,7 +362,7 @@ public class UploadActivity extends AppCompatActivity {
                 Toast.makeText(this, "Tidak dapat membaca file utama", Toast.LENGTH_SHORT).show();
                 return;
             }
-            String url = "http://10.10.180.226/SIPORAWEB/backend/sipora_api/upload_mobile.php";
+            String url = "http://192.168.0.180/SIPORAWEB/frontend/upload_mobile.php";
 
             VolleyMultipartRequest request = new VolleyMultipartRequest(
                     Request.Method.POST,
@@ -379,15 +373,25 @@ public class UploadActivity extends AppCompatActivity {
                         Log.d("UploadActivity", "Response: " + result);
 
                         try {
-                            // Parse JSON response
                             org.json.JSONObject jsonResponse = new org.json.JSONObject(result);
                             String status = jsonResponse.getString("status");
                             String message = jsonResponse.getString("message");
 
                             if ("success".equals(status)) {
+
+                                if (jsonResponse.has("turnitin_file")) {
+                                    String fileTurnitinPath = jsonResponse.getString("turnitin_file");
+                                    Log.d("UploadActivity", "File turnitin berhasil disimpan: " + fileTurnitinPath);
+                                }
+                                sendNotif(
+                                        idUser,
+                                        "Upload Dokumen Berhasil",
+                                        "Dokumen '" + judul + "' berhasil diupload dan menunggu verifikasi."
+                                );
+
                                 Toast.makeText(this, "Upload berhasil!", Toast.LENGTH_LONG).show();
                                 resetForm();
-                            } else {
+                        } else {
                                 Toast.makeText(this, "Upload gagal: " + message, Toast.LENGTH_LONG).show();
                             }
                         } catch (Exception e) {
@@ -415,22 +419,29 @@ public class UploadActivity extends AppCompatActivity {
                     params.put("judul", judul);
                     params.put("abstrak", abstrak);
                     params.put("kata_kunci", kataKunci);
-
                     params.put("turnitin_percentage", turnitinPercentageStr);
+                    int temaPosition = spinnerTema.getSelectedItemPosition();
+                    int jurusanPosition = spinnerJurusan.getSelectedItemPosition();
+                    int prodiPosition = spinnerProdi.getSelectedItemPosition();
+                    int divisiPosition = spinnerDivisi.getSelectedItemPosition();
+                    int tahunPosition = spinnerTahun.getSelectedItemPosition();
                     String selectedTema = spinnerTema.getSelectedItem().toString();
                     String selectedJurusan = spinnerJurusan.getSelectedItem().toString();
                     String selectedProdi = spinnerProdi.getSelectedItem().toString();
+                    String selectedDivisi = spinnerDivisi.getSelectedItem().toString();
                     String selectedTahun = spinnerTahun.getSelectedItem().toString();
 
-                    Log.d("SpinnerDebug", "Selected - Tema: " + selectedTema +
-                            ", Jurusan: " + selectedJurusan + ", Prodi: " + selectedProdi +
-                            ", Tahun: " + selectedTahun + ", Turnitin: " + turnitinPercentageStr);
-
-                    params.put("id_tema", String.valueOf(spinnerTema.getSelectedItemPosition()));
-                    params.put("id_jurusan", String.valueOf(spinnerJurusan.getSelectedItemPosition()));
-                    params.put("id_prodi", String.valueOf(spinnerProdi.getSelectedItemPosition()));
-                    params.put("id_divisi", String.valueOf(spinnerDivisi.getSelectedItemPosition()));
-                    params.put("year_id", String.valueOf(spinnerTahun.getSelectedItemPosition()));
+                    Log.d("UserSelection", "User memilih:");
+                    Log.d("UserSelection", "Tema: " + selectedTema + " (Position: " + temaPosition + ")");
+                    Log.d("UserSelection", "Jurusan: " + selectedJurusan + " (Position: " + jurusanPosition + ")");
+                    Log.d("UserSelection", "Prodi: " + selectedProdi + " (Position: " + prodiPosition + ")");
+                    Log.d("UserSelection", "Divisi: " + selectedDivisi + " (Position: " + divisiPosition + ")");
+                    Log.d("UserSelection", "Tahun: " + selectedTahun + " (Position: " + tahunPosition + ")");
+                    params.put("id_tema", String.valueOf(temaPosition));      // Kirim 0-based
+                    params.put("id_jurusan", String.valueOf(jurusanPosition)); // Kirim 0-based
+                    params.put("id_prodi", String.valueOf(prodiPosition));    // Kirim 0-based
+                    params.put("id_divisi", String.valueOf(divisiPosition));  // Kirim 0-based
+                    params.put("year_id", String.valueOf(tahunPosition));     // Kirim 0-based
                     params.put("turnitin", fileUriTurnitin != null ? "1" : "0");
 
                     Log.d("UploadParams", "Params to server: " + params.toString());
@@ -448,7 +459,7 @@ public class UploadActivity extends AppCompatActivity {
                             byte[] fileTurnitinData = readFileData(fileUriTurnitin);
                             if (fileTurnitinData != null) {
                                 String turnitinFileName = getFileName(fileUriTurnitin);
-                                params.put("file_turnitin", new DataPart(turnitinFileName, fileTurnitinData, getMimeType(turnitinFileName)));
+                                params.put("turnitin_file", new DataPart(turnitinFileName, fileTurnitinData, getMimeType(turnitinFileName)));
                             }
                         }
                     } catch (Exception e) {
@@ -502,6 +513,25 @@ public class UploadActivity extends AppCompatActivity {
             case "png": return "image/png";
             default: return "application/octet-stream";
         }
+    }
+    private void sendNotif(int userId, String judul, String isi) {
+        String url = "http://192.168.0.180/SIPORAWEB/frontend/insert_notifikasi.php";
+
+        StringRequest req = new StringRequest(Request.Method.POST, url,
+                r -> Log.d("NOTIF","Sent"),
+                e -> Log.e("NOTIF","Error "+e.toString())
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> p = new HashMap<>();
+                p.put("user_id", String.valueOf(userId));
+                p.put("judul", judul);
+                p.put("isi", isi);
+                return p;
+            }
+        };
+
+        Volley.newRequestQueue(this).add(req);
     }
 
     private void resetForm() {

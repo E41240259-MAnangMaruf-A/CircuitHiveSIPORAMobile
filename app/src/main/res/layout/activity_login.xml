@@ -12,20 +12,26 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Header -->
+        <!-- SPACER ATAS UNTUK MENURUNKAN KONTEN -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <!-- Header Logo -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingVertical="20dp">
 
             <ImageView
                 android:id="@+id/atr_logo"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_polije"
+                android:layout_marginBottom="6dp"
                 android:contentDescription="Logo SIPORA"
-                android:layout_marginBottom="6dp" />
+                android:src="@drawable/ic_polije" />
 
             <TextView
                 android:id="@+id/atr_app_title"
@@ -40,10 +46,10 @@
                 android:id="@+id/atr_app_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="Sistem Informasi Polije Repository Assets"
                 android:textColor="@android:color/white"
-                android:textSize="12sp"
-                android:layout_marginTop="2dp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <!-- Login Card -->
@@ -58,7 +64,7 @@
             android:layout_marginEnd="32dp"
             android:elevation="6dp">
 
-            <!-- ✅ ubah username jadi email -->
+            <!-- Email -->
             <EditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
@@ -69,6 +75,7 @@
                 android:textSize="12sp"
                 android:inputType="textEmailAddress" />
 
+            <!-- Password -->
             <EditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
@@ -80,6 +87,7 @@
                 android:textSize="12sp"
                 android:inputType="textPassword" />
 
+            <!-- Show Password & Forgot Password -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,43 +119,61 @@
                     android:foreground="?attr/selectableItemBackground" />
             </LinearLayout>
 
+            <!-- Login Button -->
             <Button
                 android:id="@+id/btnLogin"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="38dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:backgroundTint="#1976D2"
                 android:text="LOGIN"
                 android:textColor="@android:color/white"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
+            <!-- Or Text -->
             <TextView
                 android:id="@+id/tvOrText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Atau"
                 android:layout_gravity="center"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginBottom="2dp"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="11sp" />
 
-            <TextView
-                android:id="@+id/tvSignUp"
+            <!-- Container untuk Sign Up di tengah -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/bg_edittext"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:text="Belum punya akun? Daftar di sini"
-                android:textColor="#1976D2"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="8dp">
+
+                <!-- Sign Up -->
+                <TextView
+                    android:id="@+id/tvSignUp"
+                    android:layout_width="200dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/bg_edittext"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:text="Belum punya akun? Daftar di sini"
+                    android:textColor="#1976D2"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
         </LinearLayout>
+
+        <!-- SPACER BAWAH UNTUK MEMBERI RUANG -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
     </LinearLayout>
 </ScrollView>

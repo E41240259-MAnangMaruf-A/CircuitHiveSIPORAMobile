@@ -1,17 +1,9 @@
 package com.example.sipora.rizalmhs.Register;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -19,24 +11,18 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sipora.R;
 
-import java.io.ByteArrayOutputStream;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class ProfileEditActivity extends AppCompatActivity {
 
-    EditText etNama, etEmail, etJurusan, etProdi;
-    ImageView imgProfile, btnBack;
-    Button btnSimpan;
+    private EditText etNama, etUsername, etEmail, etNIM;
+    private Button btnSave, btnCancel;
 
-    Bitmap bitmap;
-    Uri filePath;
-
-    private static final String URL_UPDATE_PROFILE =
-            "http://192.168.1.45/SIPORAWEB/backend/sipora_api/update_profile.php";
-
-    private static final String URL_UPLOAD_PHOTO =
-            "http://192.168.1.45/SIPORAWEB/backend/sipora_api/upload_photo.php";
+    private static final String URL_EDIT =
+            "http://192.168.0.180/SIPORAWEB/frontend/update_profile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,112 +30,71 @@ public class ProfileEditActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_edit);
 
         etNama = findViewById(R.id.etNama);
+        etUsername = findViewById(R.id.etUsername);
         etEmail = findViewById(R.id.etEmail);
-        etJurusan = findViewById(R.id.etJurusan);
-        etProdi = findViewById(R.id.etProdi);
-        imgProfile = findViewById(R.id.imgProfile);
-        btnBack = findViewById(R.id.btnBack);
-        btnSimpan = findViewById(R.id.btnSimpan);
+        etNIM = findViewById(R.id.etNIM);
 
+        btnSave = findViewById(R.id.btnSave);
+        btnCancel = findViewById(R.id.btnCancel);
+
+        loadFromSession();
+
+        btnCancel.setOnClickListener(v -> finish());
+        btnSave.setOnClickListener(v -> saveProfile());
+    }
+
+    private void loadFromSession() {
         etNama.setText(UserSession.getUserName(this));
-
-        btnBack.setOnClickListener(v -> finish());
-
-        imgProfile.setOnClickListener(v -> pilihFoto());
-
-        btnSimpan.setOnClickListener(v -> {
-            if (bitmap != null) {
-                uploadFoto(); // upload foto dulu
-            }
-            updateProfile(); // baru update data
-        });
     }
 
-    private void pilihFoto() {
-        Intent pick = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(pick, 101);
-    }
+    private void saveProfile() {
+        int id = UserSession.getUserId(this);
 
-    @Override
-    protected void onActivityResult(int req, int res, @Nullable Intent data) {
-        super.onActivityResult(req, res, data);
-
-        if (req == 101 && res == RESULT_OK && data != null) {
-            filePath = data.getData();
-
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                imgProfile.setImageBitmap(bitmap);
-            } catch (Exception ignored) {}
+        if (id <= 0) {
+            Toast.makeText(this, "User tidak valid, silakan login ulang.", Toast.LENGTH_LONG).show();
+            return;
         }
-    }
 
-    private void uploadFoto() {
-        ProgressDialog pd = new ProgressDialog(this);
-        pd.setMessage("Mengupload foto...");
-        pd.show();
-
-        StringRequest req = new StringRequest(Request.Method.POST, URL_UPLOAD_PHOTO,
-                res -> {
-                    pd.dismiss();
-                    Toast.makeText(this, "Foto berhasil diperbarui!", Toast.LENGTH_SHORT).show();
-                },
-                err -> {
-                    pd.dismiss();
-                    Toast.makeText(this, "Gagal upload foto!", Toast.LENGTH_SHORT).show();
-                }) {
-
-            @Override
-            public byte[] getBody() {
-                ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 70, bos);
-                return bos.toByteArray();
-            }
-
-            @Override
-            public String getBodyContentType() {
-                return "image/jpeg";
-            }
-
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("user_id", String.valueOf(UserSession.getUserId(ProfileEditActivity.this)));
-                return params;
-            }
-        };
-
-        Volley.newRequestQueue(this).add(req);
-    }
-
-    private void updateProfile() {
-        ProgressDialog pd = new ProgressDialog(this);
-        pd.setMessage("Menyimpan perubahan...");
-        pd.show();
-
-        StringRequest req = new StringRequest(Request.Method.POST, URL_UPDATE_PROFILE,
-                res -> {
-                    pd.dismiss();
-                    Toast.makeText(this, "Profil berhasil diperbarui", Toast.LENGTH_SHORT).show();
-                    finish();
-                },
-                err -> {
-                    pd.dismiss();
-                    Toast.makeText(this, "Gagal memperbarui profil", Toast.LENGTH_SHORT).show();
-                }) {
-
+        StringRequest req = new StringRequest(Request.Method.POST, URL_EDIT,
+                res -> handleResponse(res),
+                err -> Toast.makeText(this, "Gagal menghubungi server", Toast.LENGTH_SHORT).show()
+        ) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> p = new HashMap<>();
-                p.put("user_id", String.valueOf(UserSession.getUserId(ProfileEditActivity.this)));
+                p.put("id_user", String.valueOf(id));
                 p.put("nama_lengkap", etNama.getText().toString());
+                p.put("username", etUsername.getText().toString());
                 p.put("email", etEmail.getText().toString());
-                p.put("jurusan", etJurusan.getText().toString());
-                p.put("prodi", etProdi.getText().toString());
+                p.put("nim", etNIM.getText().toString());
                 return p;
             }
         };
 
         Volley.newRequestQueue(this).add(req);
+    }
+
+    private void handleResponse(String res) {
+        try {
+            JSONObject obj = new JSONObject(res);
+
+            if (obj.getString("status").equals("success")) {
+
+                int userId = UserSession.getUserId(this);
+                String nama = etNama.getText().toString();
+                String username = UserSession.getUsername(this);
+                String email = UserSession.getUserEmail(this);
+                String nim = UserSession.getNim(this);
+
+                UserSession.saveUser(this, userId, nama, username, email, nim);
+
+                Toast.makeText(this, "Profil diperbarui", Toast.LENGTH_SHORT).show();
+                finish();
+
+            } else {
+                Toast.makeText(this, obj.getString("message"), Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (Exception ignored) {}
     }
 }

@@ -1,41 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="12dp"
-    android:layout_margin="8dp"
-    android:background="@drawable/bg_white_rounded"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="6dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="3dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
-    <!-- Judul Notifikasi -->
-    <TextView
-        android:id="@+id/tvJudul"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:textColor="#000"
-        android:maxLines="2"
-        android:ellipsize="end" />
+        android:paddingVertical="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
-    <!-- Isi Notifikasi -->
-    <TextView
-        android:id="@+id/tvIsi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="13sp"
-        android:textColor="#666"
-        android:layout_marginTop="4dp"
-        android:maxLines="3"
-        android:ellipsize="end" />
+        <!-- Ikon Notifikasi -->
+        <ImageView
+            android:id="@+id/ivIconNotif"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_baseline_notifications_24"
+            android:contentDescription="Ikon Notifikasi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Waktu -->
-    <TextView
-        android:id="@+id/tvWaktu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="11sp"
-        android:textColor="#999"
-        android:layout_marginTop="6dp" />
+        <!-- Teks Judul (Sekarang Bisa Multi-Baris) -->
+        <TextView
+            android:id="@+id/tvJudul"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="16dp"
+            android:text="Judul Notifikasi yang Sangat Panjang dan Tidak Akan Terpotong Lagi"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/ivIconNotif"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivIconNotif" />
 
-</LinearLayout>
+        <!-- Teks Waktu (Dipindahkan ke Bawah Judul) -->
+        <TextView
+            android:id="@+id/tvWaktu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="21 Nov 2025 - 14:30"
+            android:textAppearance="?attr/textAppearanceCaption"
+            android:textColor="?android:attr/textColorSecondary"
+            app:layout_constraintStart_toStartOf="@id/tvJudul"
+            app:layout_constraintTop_toBottomOf="@id/tvJudul" />
+
+        <!-- GARIS PEMISAH -->
+        <View
+            android:id="@+id/separator"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            android:background="?android:attr/dividerHorizontal"
+            app:layout_constraintTop_toBottomOf="@id/tvWaktu"
+            app:layout_constraintStart_toStartOf="@id/tvJudul"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Teks Isi Pesan -->
+        <TextView
+            android:id="@+id/tvIsi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Ini adalah isi notifikasi. Dengan struktur ini, judul memiliki ruang yang cukup dan tidak akan pernah terpotong, menciptakan tampilan yang sempurna dan mudah dibaca."
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:maxLines="3"
+            android:ellipsize="end"
+            app:layout_constraintStart_toStartOf="@id/tvJudul"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/separator" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,4 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- String label -->
     <string name="app_name">Sipora</string>
     <string name="judul_dokumen_label">Judul Dokumen <font color='#FF0000'>*</font></string>
     <string name="abstrak_label">Abstrak / Deskripsi <font color='#FF0000'>*</font></string>
@@ -11,63 +13,202 @@
     <string name="divisi_label">Divisi <font color='#FF0000'>*</font></string>
     <string name="tema_label">Tema <font color='#FF0000'>*</font></string>
 
+    <!-- Jenis Dokumen -->
+    <string-array name="jenis_dokumen">
+        <item>Pilih Dokumen</item>
+        <item>Artikel</item>
+        <item>Skripsi</item>
+        <item>Tugas Akhir</item>
+        <item>Laporan</item>
+    </string-array>
 
-    <!-- Prodi per Jurusan -->
+    <string-array name="jurusan_list">
+        <item>Pilih Jurusan</item>
+        <item>Teknologi Informasi</item>          <!-- Position 1 -> ID 1 -->
+        <item>Produksi Pertanian</item>           <!-- Position 2 -> ID 2 -->
+        <item>Teknologi Pertanian</item>          <!-- Position 3 -> ID 3 -->
+        <item>Peternakan</item>                   <!-- Position 4 -> ID 4 -->
+        <item>Manajemen Agribisnis</item>         <!-- Position 5 -> ID 5 -->
+        <item>Bahasa, Komunikasi dan Pariwisata</item> <!-- Position 6 -> ID 6 -->
+        <item>Kesehatan</item>                    <!-- Position 7 -> ID 7 -->
+        <item>Teknik</item>                       <!-- Position 8 -> ID 8 -->
+        <item>Bisnis</item>                       <!-- Position 9 -> ID 9 -->
+        <item>Kelas Internasional</item>          <!-- Position 10 -> ID 10 -->
+    </string-array>
+
+    <!-- ARRAY UTAMA - Digunakan di UploadActivity (SUDAH DIPERBAIKI) -->
+    <string-array name="prodi_list">
+        <item>Pilih Program Studi</item>
+        <!-- Teknologi Informasi -->
+        <item>Teknik Informatika</item>           <!-- Position 1 -> ID 1 -->
+        <item>Manajemen Informatika</item>        <!-- Position 2 -> ID 2 -->
+        <item>Teknik Komputer</item>              <!-- Position 3 -> ID 3 -->
+        <item>Teknologi Rekayasa Komputer</item>  <!-- Position 4 -> ID 4 -->
+        <!-- Produksi Pertanian -->
+        <item>Produksi Tanaman Hortikultura</item> <!-- Position 5 -> ID 5 -->
+        <item>Produksi Tanaman Perkebunan</item>  <!-- Position 6 -> ID 6 -->
+        <item>Teknik Produksi Benih</item>        <!-- Position 7 -> ID 7 -->
+        <item>Teknologi Produksi Tanaman Pangan</item> <!-- Position 8 -> ID 8 -->
+        <item>Budidaya Tanaman Perkebunan</item>  <!-- Position 9 -> ID 9 -->
+        <item>Pengelolaan Perkebunan Kopi</item>  <!-- Position 10 -> ID 10 -->
+        <!-- Teknologi Pertanian -->
+        <item>Keteknikan Pertanian</item>         <!-- Position 11 -> ID 11 -->
+        <item>Teknologi Industri Pangan</item>    <!-- Position 12 -> ID 12 -->
+        <item>Teknologi Rekayasa Pangan</item>    <!-- Position 13 -> ID 13 -->
+        <!-- Peternakan -->
+        <item>Produksi Ternak</item>              <!-- Position 14 -> ID 14 -->
+        <item>Manajemen Bisnis Unggas</item>      <!-- Position 15 -> ID 15 -->
+        <item>Teknologi Pakan Ternak</item>       <!-- Position 16 -> ID 16 -->
+        <!-- Manajemen Agribisnis -->
+        <item>Manajemen Agribisnis</item>         <!-- Position 17 -> ID 17 -->
+        <item>Manajemen Agroindustri</item>       <!-- Position 18 -> ID 18 -->
+        <item>Pascasarjana Agribisnis</item>      <!-- Position 19 -> ID 19 -->
+        <!-- Bahasa, Komunikasi dan Pariwisata -->
+        <item>Bahasa Inggris</item>               <!-- Position 20 -> ID 20 -->
+        <item>Destinasi Pariwisata</item>         <!-- Position 21 -> ID 21 -->
+        <item>Produksi Media Kampus Bondowoso</item> <!-- Position 22 -> ID 22 -->
+        <!-- Kesehatan -->
+        <item>Manajemen Informasi Kesehatan</item> <!-- Position 23 -> ID 23 -->
+        <item>Gizi Klinik</item>                  <!-- Position 24 -> ID 24 -->
+        <item>Promosi Kesehatan</item>            <!-- Position 25 -> ID 25 -->
+        <!-- Teknik -->
+        <item>Teknik Mesin Otomotif</item>        <!-- Position 26 -> ID 26 -->
+        <item>Teknik Energi Terbarukan</item>     <!-- Position 27 -> ID 27 -->
+        <item>Teknologi Rekayasa Mekatronika</item> <!-- Position 28 -> ID 28 -->
+        <!-- Bisnis -->
+        <item>Akuntansi Sektor Publik</item>      <!-- Position 29 -> ID 29 -->
+        <item>Manajemen Pemasaran Internasional</item> <!-- Position 30 -> ID 30 -->
+        <item>Bisnis Digital (Kampus Bondowoso)</item> <!-- Position 31 -> ID 31 -->
+        <!-- Kelas Internasional -->
+        <item>Manajemen Informatika (Kelas Internasional)</item> <!-- Position 32 -> ID 32 -->
+        <item>Teknik Informatika (Kelas Internasional)</item>    <!-- Position 33 -> ID 33 -->
+        <item>Manajemen Agroindustri (Kelas Internasional)</item> <!-- Position 34 -> ID 34 -->
+    </string-array>
+
+    <!-- ARRAY PER JURUSAN (jika diperlukan untuk activity lain) -->
+    <!-- Tetap simpan untuk kompatibilitas jika ada activity lain yang menggunakan -->
+    <string-array name="prodi_teknologi_informasi">
+        <item>Pilih Program Studi</item>
+        <item>Teknik Informatika</item>
+        <item>Manajemen Informatika</item>
+        <item>Teknik Komputer</item>
+        <item>Teknologi Rekayasa Komputer</item>
+    </string-array>
+
+    <string-array name="prodi_produksi_pertanian">
+        <item>Pilih Program Studi</item>
+        <item>Produksi Tanaman Hortikultura</item>
+        <item>Produksi Tanaman Perkebunan</item>
+        <item>Teknik Produksi Benih</item>
+        <item>Teknologi Produksi Tanaman Pangan</item>
+        <item>Budidaya Tanaman Perkebunan</item>
+        <item>Pengelolaan Perkebunan Kopi</item>
+    </string-array>
+
     <string-array name="prodi_teknologi_pertanian">
         <item>Pilih Program Studi</item>
-        <item>D3 Teknologi Hasil Pertanian</item>
-        <item>D4 Teknologi Industri Pangan</item>
-        <item>D4 Teknologi Rekayasa Pangan</item>
-        <item>D4 Teknologi Rekayasa Bioproses</item>
+        <item>Keteknikan Pertanian</item>
+        <item>Teknologi Industri Pangan</item>
+        <item>Teknologi Rekayasa Pangan</item>
     </string-array>
 
     <string-array name="prodi_peternakan">
         <item>Pilih Program Studi</item>
-        <item>D3 Produksi Ternak</item>
-        <item>D3 Kesehatan Hewan</item>
-        <item>D4 Teknologi Pakan Ternak</item>
-        <item>D4 Manajemen Bisnis Unggas</item>
+        <item>Produksi Ternak</item>
+        <item>Manajemen Bisnis Unggas</item>
+        <item>Teknologi Pakan Ternak</item>
     </string-array>
 
     <string-array name="prodi_manajemen_agribisnis">
         <item>Pilih Program Studi</item>
-        <item>D3 Agribisnis</item>
-        <item>D4 Manajemen Agroindustri</item>
-        <item>D4 Manajemen Pertanian Berkelanjutan</item>
-    </string-array>
-
-    <string-array name="prodi_teknik">
-        <item>Pilih Program Studi</item>
-        <item>D3 Teknik Energi Terbarukan</item>
-        <item>D3 Teknik Mesin Pertanian</item>
-        <item>D4 Teknologi Rekayasa Mekatronika</item>
-    </string-array>
-
-    <string-array name="prodi_kesehatan">
-        <item>Pilih Program Studi</item>
-        <item>D3 Gizi Klinik</item>
-        <item>D3 Keperawatan</item>
-        <item>D3 Kebidanan</item>
-    </string-array>
-
-    <string-array name="prodi_teknologi_informasi">
-        <item>Pilih Program Studi</item>
-        <item>D3 Manajemen Informatika</item>
-        <item>D3 Teknik Komputer</item>
-        <item>D4 Teknik Informatika</item>
-        <item>D4 Teknik Rekayasa Komputer</item>
+        <item>Manajemen Agribisnis</item>
+        <item>Manajemen Agroindustri</item>
+        <item>Pascasarjana Agribisnis</item>
     </string-array>
 
     <string-array name="prodi_bkp">
         <item>Pilih Program Studi</item>
-        <item>D3 Bahasa Inggris</item>
-        <item>D4 Perhotelan</item>
-        <item>D3 Usaha Perjalanan Wisata</item>
+        <item>Bahasa Inggris</item>
+        <item>Destinasi Pariwisata</item>
+        <item>Produksi Media Kampus Bondowoso</item>
+    </string-array>
+
+    <string-array name="prodi_kesehatan">
+        <item>Pilih Program Studi</item>
+        <item>Manajemen Informasi Kesehatan</item>
+        <item>Gizi Klinik</item>
+        <item>Promosi Kesehatan</item>
+    </string-array>
+
+    <string-array name="prodi_teknik">
+        <item>Pilih Program Studi</item>
+        <item>Teknik Mesin Otomotif</item>
+        <item>Teknik Energi Terbarukan</item>
+        <item>Teknologi Rekayasa Mekatronika</item>
+    </string-array>
+
+    <string-array name="prodi_bisnis">
+        <item>Pilih Program Studi</item>
+        <item>Akuntansi Sektor Publik</item>
+        <item>Manajemen Pemasaran Internasional</item>
+        <item>Bisnis Digital (Kampus Bondowoso)</item>
+    </string-array>
+
+    <!-- ARRAY KELAS INTERNASIONAL (SUDAH DIPERBAIKI) -->
+    <string-array name="prodi_kelas_internasional">
+        <item>Pilih Program Studi</item>
+        <item>Manajemen Informatika (Kelas Internasional)</item>
+        <item>Teknik Informatika (Kelas Internasional)</item>
+        <item>Manajemen Agroindustri (Kelas Internasional)</item>
+    </string-array>
+
+    <string-array name="tema_list">
+        <item>Pilih Tema</item>
+        <item>Ilmu Komputer</item>
+        <item>Ilmu Pertanian dan Perkebunan</item>
+        <item>Hortikultura</item>
+        <item>Perkebunan</item>
+        <item>Teknologi dalam Ilmu Tanaman</item>
+        <item>Teknologi Pangan dan Gizi</item>
+        <item>Ilmu Kesehatan Umum</item>
+        <item>Kebijakan dan Analisis Kesehatan</item>
+        <item>Ilmu Gizi</item>
+        <item>Promosi Kesehatan</item>
+        <item>Teknik Komputer</item>
+        <item>Teknik Informatika</item>
+        <item>Teknologi Informasi</item>
+        <item>Teknik Perangkat Lunak</item>
+        <item>Pendidikan Bahasa Inggris</item>
+        <item>Pendidikan Matematika</item>
+        <item>Pendidikan Fisika</item>
+    </string-array>
+
+    <!-- Tahun List -->
+    <string-array name="tahun_list">
+        <item>Pilih Tahun</item>
+        <item>2025</item>
+        <item>2024</item>
+        <item>2023</item>
+        <item>2022</item>
+        <item>2021</item>
+        <item>2020</item>
+        <item>2019</item>
+        <item>2018</item>
+        <item>2017</item>
+        <item>2016</item>
+        <item>2015</item>
+    </string-array>
+
+    <!-- Divisi List -->
+    <string-array name="divisi_list">
+        <item>Pilih Divisi</item>
+        <item>Tugas Akhir</item>       <!-- ID 261 -->
+        <item>PKL</item>               <!-- ID 262 -->
+        <item>Publikasi</item>         <!-- ID 263 -->
+        <item>General</item>           <!-- ID 264 -->
     </string-array>
 
     <string-array name="role_array">
         <item>Mahasiswa</item>
     </string-array>
-
 </resources>
-

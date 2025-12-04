@@ -48,14 +48,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1" />
-
-        <!-- Icon Bell -->
-        <ImageView
-            android:id="@+id/iconBell"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_baseline_notifications_24"
-            app:tint="#000" />
     </LinearLayout>
 
     <!-- Scroll utama -->

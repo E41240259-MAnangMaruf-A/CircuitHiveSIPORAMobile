@@ -8,6 +8,7 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.widget.*;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView tvLogin;
     private CheckBox cbAgree;
 
-    private static final String URL_REGISTER = "http://10.10.180.226/SIPORAWEB/backend/sipora_api/register.php";
+    private static final String URL_REGISTER = "http://192.168.0.180/SIPORAWEB/frontend/register.php";
 
     private boolean isPasswordVisible = false;
     private boolean isConfirmPasswordVisible = false;
@@ -40,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        EdgeToEdge.enable(this);
         etNama = findViewById(R.id.etNama);
         etNim = findViewById(R.id.etNomorInduk);
         etEmail = findViewById(R.id.etEmail);

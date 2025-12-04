@@ -10,7 +10,7 @@
     android:fitsSystemWindows="true"
     tools:context=".rizalmhs.Register.DashboardActivity">
 
-    <!-- Header atas -->
+    <!-- ===================== HEADER ATAS ===================== -->
     <LinearLayout
         android:id="@+id/topHeader"
         android:layout_width="0dp"
@@ -24,10 +24,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- 🔹 FOTO PROFIL / PROFILE BUTTON -->
+        <ImageView
+            android:id="@+id/btnProfile"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@drawable/ic_profile"
+            android:padding="6dp"
+            android:background="@drawable/bg_circle_light"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Profile" />
+
         <TextView
             android:id="@+id/tvSipora"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:text="SIPORA"
             android:textColor="#000"
             android:textSize="18sp"
@@ -38,15 +51,17 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
+        <!-- 🔔 TOMBBOL NOTIFIKASI -->
         <ImageView
-            android:id="@+id/icBell"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:id="@+id/btnNotif"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:src="@drawable/ic_baseline_notifications_24"
+            android:padding="4dp"
             android:contentDescription="Notifikasi" />
     </LinearLayout>
 
-    <!-- Konten utama scroll -->
+    <!-- ===================== SCROLL CONTENT ===================== -->
     <ScrollView
         android:id="@+id/scrollContent"
         android:layout_width="0dp"
@@ -65,7 +80,7 @@
             android:paddingTop="16dp"
             android:paddingBottom="100dp">
 
-            <!-- Header Card Biru -->
+            <!-- ===================== HEADER CARD ===================== -->
             <LinearLayout
                 android:id="@+id/headerCard"
                 android:layout_width="match_parent"
@@ -84,7 +99,7 @@
                     android:id="@+id/tvWelcome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Selamat Datang, Rizal!"
+                    android:text="Selamat Datang!"
                     android:textColor="@android:color/white"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -112,12 +127,12 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Kolom pencarian -->
+            <!-- ===================== SEARCH BAR ===================== -->
             <EditText
                 android:id="@+id/etSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Cari dokumen, penulis, kata kunci "
+                android:hint="Cari dokumen, penulis, kata kunci"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="12dp"
                 android:background="@drawable/bg_rounded_white"
@@ -127,7 +142,7 @@
                 android:layout_marginBottom="16dp"
                 android:textSize="14sp" />
 
-            <!-- Judul Statistik -->
+            <!-- ===================== STATISTIK ===================== -->
             <TextView
                 android:id="@+id/tvStatistik"
                 android:layout_width="wrap_content"
@@ -140,7 +155,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="12dp" />
 
-            <!-- 🔹 Statistik Dashboard -->
             <LinearLayout
                 android:id="@+id/layoutStatistik"
                 android:layout_width="match_parent"
@@ -153,49 +167,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:columnCount="2"
-                    android:alignmentMode="alignMargins"
-                    android:columnOrderPreserved="false"
-                    android:useDefaultMargins="true">
+                    android:useDefaultMargins="true"
+                    android:alignmentMode="alignMargins">
 
-                    <!-- 🔸 Kartu 1 -->
+                    <!-- CARD 1 - TOTAL DOKUMEN -->
                     <include
-                        layout="@layout/item_stat_card"
                         android:id="@+id/statTotalDokumen"
+                        layout="@layout/item_stat_card"
                         android:layout_width="0dp"
                         android:layout_height="120dp"
                         android:layout_columnWeight="1"
                         android:layout_margin="8dp" />
 
-                    <!-- 🔸 Kartu 2 -->
+                    <!-- CARD 2 - TOTAL DOWNLOAD -->
                     <include
-                        layout="@layout/item_stat_card"
                         android:id="@+id/statDownload"
+                        layout="@layout/item_stat_card"
                         android:layout_width="0dp"
                         android:layout_height="120dp"
                         android:layout_columnWeight="1"
                         android:layout_margin="8dp" />
 
-                    <!-- 🔸 Kartu 3 -->
-                    <include
-                        layout="@layout/item_stat_card"
-                        android:id="@+id/statPengguna"
-                        android:layout_width="0dp"
-                        android:layout_height="120dp"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp" />
-
-                    <!-- 🔸 Kartu 4 -->
-                    <include
-                        layout="@layout/item_stat_card"
-                        android:id="@+id/statUpload"
-                        android:layout_width="0dp"
-                        android:layout_height="120dp"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp" />
                 </GridLayout>
             </LinearLayout>
 
-            <!-- Dokumen Terbaru -->
+
+            <!-- ===================== DOKUMEN TERBARU ===================== -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -223,7 +220,6 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- RecyclerView Dokumen Terbaru -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerDokumen"
                 android:layout_width="match_parent"

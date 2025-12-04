@@ -57,30 +57,14 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.Holder> {
         h.tvProdi.setText(d.nama_prodi != null ? d.nama_prodi : "-");
         h.tvTahun.setText(d.tahun != null ? d.tahun : "-");
         h.tvDownloadCount.setText(d.download_count + " Download");
-
-        // ==========================
-        // TAMPILKAN JENIS FILE
-        // ==========================
         h.tvFileType.setText(
                 d.file_type != null ? d.file_type.toUpperCase() : "-"
         );
-
-        // ==========================
-        // BUTTON LIHAT
-        // ==========================
         h.btnLihat.setOnClickListener(v -> openFile(d.fileUrl));
-
-        // ==========================
-        // BUTTON DOWNLOAD
-        // ==========================
         h.btnDownload.setOnClickListener(v -> {
             openFile(d.fileUrl);
             logDownload(d.id, UserSession.getUserId(context));
         });
-
-        // ==========================
-        // KLIK ITEM = LIHAT
-        // ==========================
         h.itemView.setOnClickListener(v -> openFile(d.fileUrl));
     }
 
@@ -88,11 +72,6 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.Holder> {
     public int getItemCount() {
         return list != null ? list.size() : 0;
     }
-
-
-    // ==========================================================
-    // OPEN FILE
-    // ==========================================================
     private void openFile(String url) {
         if (url == null || url.isEmpty()) {
             Toast.makeText(context, "File tidak tersedia", Toast.LENGTH_SHORT).show();
@@ -108,13 +87,9 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.Holder> {
             Log.e("OPEN_FILE", "Error: " + e.getMessage());
         }
     }
-
-    // ==========================================================
-    // LOG DOWNLOAD
-    // ==========================================================
     private void logDownload(int dokumenId, int userId) {
 
-        String url = "http://10.10.180.226/SIPORAWEB/backend/sipora_api/log_download.php";
+        String url = "http://192.168.0.180/SIPORAWEB/frontend/log_download.php";
 
         StringRequest req = new StringRequest(
                 Request.Method.POST,

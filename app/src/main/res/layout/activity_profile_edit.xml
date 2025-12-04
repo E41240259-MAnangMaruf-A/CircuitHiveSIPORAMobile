@@ -1,75 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F8FA">
+    android:fillViewport="true">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_margin="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <ImageView
-            android:id="@+id/btnBack"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_width="24dp"
-            android:layout_height="24dp" />
+        <!-- TITLE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profil"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
 
-        <ImageView
-            android:id="@+id/imgProfile"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/ic_profile"
-            android:background="@drawable/bg_circle"
-            android:padding="10dp" />
-
-        <EditText
-            android:id="@+id/etNama"
+        <!-- NAMA LENGKAP -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nama Lengkap"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bg_white_rounded"
-            android:padding="12dp" />
+            android:hint="Nama Lengkap">
 
-        <EditText
-            android:id="@+id/etEmail"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- USERNAME -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:layout_marginTop="15dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:backgroundTint="@color/gray" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- EMAIL -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_white_rounded"
-            android:padding="12dp" />
+            android:layout_marginTop="15dp">
 
-        <EditText
-            android:id="@+id/etJurusan"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:inputType="textEmailAddress"
+                android:backgroundTint="@color/gray" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- NIM -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Jurusan"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_white_rounded"
-            android:padding="12dp" />
+            android:layout_marginTop="15dp"
+            android:hint="NIM">
 
-        <EditText
-            android:id="@+id/etProdi"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNIM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:backgroundTint="@color/gray"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- BUTTON SECTION -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Program Studi"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_white_rounded"
-            android:padding="12dp" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="25dp">
 
-        <Button
-            android:id="@+id/btnSimpan"
-            android:text="Simpan Perubahan"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#2196F3"
-            android:textColor="@android:color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Batal"
+                android:backgroundTint="@android:color/holo_green_dark"
+                android:textColor="@android:color/white" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Simpan"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

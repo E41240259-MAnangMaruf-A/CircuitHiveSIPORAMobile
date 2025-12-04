@@ -49,14 +49,11 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         DokumenModel doc = dokumenList.get(position);
 
-        // Set data ke view sesuai prototype
         holder.tvJudul.setText(doc.getJudul());
         holder.tvDeskripsi.setText(doc.getAbstrak() != null && !doc.getAbstrak().isEmpty() ?
                 doc.getAbstrak() : doc.getDeskripsi());
         holder.tvTanggal.setText(formatTanggal(doc.getTanggal()));
         holder.tvStatus.setText(doc.getStatus());
-
-        // Data uploader, jurusan, tahun, dan download count
         if (doc.getUploaderName() != null && !doc.getUploaderName().isEmpty()) {
             holder.tvUploader.setText(doc.getUploaderName());
         } else {
@@ -69,23 +66,15 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
             holder.tvJurusan.setText("Teknologi Informasi");
         }
 
-        // Tahun dari API atau dari tanggal
         String tahun = doc.getTahun() != null ? doc.getTahun() : extractYear(doc.getTanggal());
         holder.tvTahun.setText(tahun);
 
         holder.tvDownloadCount.setText(formatNumber(doc.getDownloadCount()) + " Download");
-
-        // Set warna status berdasarkan status dokumen
         setStatusColor(holder.tvStatus, doc.getStatus());
-
-        // Klik download → Buka file DAN catat download
         holder.btnDownload.setOnClickListener(v -> {
             if (doc.getFileUrl() != null && !doc.getFileUrl().isEmpty()) {
                 try {
-                    // Catat download ke server
                     logDownload(doc.getId(), UserSession.getUserId(context));
-
-                    // Buka file
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(doc.getFileUrl()));
                     context.startActivity(intent);
@@ -99,8 +88,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
                 Toast.makeText(context, "File tidak tersedia", Toast.LENGTH_SHORT).show();
             }
         });
-
-        // Klik lihat → Buka file saja (tanpa catat download)
         holder.btnLihat.setOnClickListener(v -> {
             if (doc.getFileUrl() != null && !doc.getFileUrl().isEmpty()) {
                 try {
@@ -133,7 +120,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
             return "-";
         }
         try {
-            // Format dari "2025-11-13 15:53:30" menjadi "24 September 2025"
             String[] parts = tanggal.split(" ")[0].split("-");
             if (parts.length == 3) {
                 String[] bulan = {"Januari", "Februari", "Maret", "April", "Mei", "Juni",
@@ -191,7 +177,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
                 break;
         }
 
-        // Create GradientDrawable dengan corner radius
         GradientDrawable drawable = new GradientDrawable();
         drawable.setColor(backgroundColor);
         drawable.setCornerRadius(dpToPx(20)); // 20dp corner radius
@@ -200,18 +185,12 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         tvStatus.setTextColor(textColor);
     }
 
-    /**
-     * Convert dp to pixels
-     */
     private float dpToPx(float dp) {
         return dp * context.getResources().getDisplayMetrics().density;
     }
 
-    /**
-     * Method untuk mencatat download ke server
-     */
     private void logDownload(int dokumenId, int userId) {
-        String url = "http://10.10.180.226/SIPORAWEB/backend/log_download.php";
+        String url = "http://192.168.0.180/SIPORAWEB/frontend/log_download.php";
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {

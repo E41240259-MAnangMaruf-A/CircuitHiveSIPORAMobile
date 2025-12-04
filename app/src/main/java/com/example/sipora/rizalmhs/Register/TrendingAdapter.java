@@ -42,9 +42,7 @@ public class TrendingAdapter extends RecyclerView.Adapter<TrendingAdapter.VH> {
         TrendingItem item = list.get(position);
 
         holder.tvTitle.setText(item.getTitle());
-        holder.tvPill.setText(String.valueOf(item.getCount())); // angka trending
-
-        // klik seluruh card
+        holder.tvPill.setText(String.valueOf(item.getCount()));
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) listener.onClick(item.getTitle());
         });

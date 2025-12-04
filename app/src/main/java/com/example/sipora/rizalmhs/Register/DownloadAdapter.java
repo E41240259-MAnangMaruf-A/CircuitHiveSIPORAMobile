@@ -13,14 +13,14 @@ import com.example.sipora.R;
 
 import java.util.List;
 
-public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHolder> {
+public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.VH> {
 
     private final List<DownloadModel> list;
     private final OnActionListener listener;
 
     public interface OnActionListener {
-        void onOpen(DownloadModel model);
-        void onDelete(DownloadModel model);
+        void onOpen(DownloadModel m);
+        void onDelete(DownloadModel m);
     }
 
     public DownloadAdapter(List<DownloadModel> list, OnActionListener listener) {
@@ -29,29 +29,26 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public VH onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_download, parent, false);
-        return new ViewHolder(v);
+        return new VH(v);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder h, int position) {
+    public void onBindViewHolder(VH h, int pos) {
 
-        DownloadModel item = list.get(position);
+        DownloadModel d = list.get(pos);
 
-        h.tvJudul.setText(item.getJudul());
-        h.tvDeskripsi.setText(item.getDeskripsi());
-        h.tvAuthor.setText(item.getAuthor());
-        h.tvTanggal.setText(item.getTanggal());
-        h.tvJenis.setText(item.getTipe());
+        h.tvJudul.setText(d.getJudul());
+        h.tvDeskripsi.setText(d.getDeskripsi());
+        h.tvAuthor.setText(d.getAuthor());
+        h.tvTanggal.setText(d.getTanggal());
+        h.tvJenis.setText(d.getTipe());
         h.tvKategori.setText("Dokumen");
         h.tvStatus.setText("Selesai");
-
-        h.btnAksi.setText("Buka File");
-        h.btnAksi.setOnClickListener(v -> listener.onOpen(item));
-
-        h.btnHapus.setOnClickListener(v -> listener.onDelete(item));
+        h.btnAksi.setOnClickListener(v -> listener.onOpen(d));
+        h.btnHapus.setOnClickListener(v -> listener.onDelete(d));
     }
 
     @Override
@@ -59,13 +56,13 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.ViewHo
         return list.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class VH extends RecyclerView.ViewHolder {
 
         TextView tvJudul, tvDeskripsi, tvAuthor, tvTanggal, tvJenis, tvKategori, tvStatus;
         AppCompatButton btnAksi;
         ImageView btnHapus;
 
-        public ViewHolder(View v) {
+        public VH(View v) {
             super(v);
 
             tvJudul = v.findViewById(R.id.tvJudul);
