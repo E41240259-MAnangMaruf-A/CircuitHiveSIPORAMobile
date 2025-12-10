@@ -17,7 +17,7 @@ import java.util.Map;
 public class NotificationUtils {
 
     private static final String TAG = "NOTIFICATION_UTILS";
-    private static final String BASE_URL = "http://192.168.0.180/SIPORAWEB/frontend/";
+    private static final String BASE_URL = "http://10.46.104.1/SIPORAWEB/frontend/";
     public static void sendDownloadNotification(Context context, String fileName) {
         sendNotification(context, "Download Dokumen",
                 "Anda telah mengunduh: " + fileName, "download");
@@ -60,8 +60,6 @@ public class NotificationUtils {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e(TAG, type.toUpperCase() + " Error: " + error.toString());
-
-                        // Debug lebih detail
                         if (error.networkResponse != null) {
                             NetworkResponse networkResponse = error.networkResponse;
                             Log.e(TAG, "Status Code: " + networkResponse.statusCode);
@@ -87,7 +85,7 @@ public class NotificationUtils {
             }
         };
         request.setRetryPolicy(new DefaultRetryPolicy(
-                15000, // 15 detik timeout
+                15000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue queue = Volley.newRequestQueue(context);

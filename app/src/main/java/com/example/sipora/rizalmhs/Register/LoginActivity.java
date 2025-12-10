@@ -46,8 +46,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private TextView tvSignUp, tvForgotPassword;
 
-    private static final String URL_LOGIN = "http://192.168.0.180/SIPORAWEB/frontend/login.php";
-    private static final String URL_FORGOT_PASSWORD = "http://192.168.0.180/SIPORAWEB/frontend/forgot_password.php";
+    private static final String URL_LOGIN = "http://10.46.104.1/SIPORAWEB/frontend/login.php";
+    private static final String URL_FORGOT_PASSWORD = "http://10.46.104.1/SIPORAWEB/frontend/forgot_password.php";
 
     private Dialog forgotPasswordDialog;
     private int failedLoginAttempts = 0;
@@ -225,7 +225,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void handleLoginSuccess(JSONObject obj) throws JSONException {
-        failedLoginAttempts = 0; // Reset counter
+        failedLoginAttempts = 0;
 
         JSONObject userObj = obj.getJSONObject("user");
 

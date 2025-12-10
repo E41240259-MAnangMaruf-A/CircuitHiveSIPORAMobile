@@ -68,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
     private boolean hasNewPhoto = false;
 
     // GANTI KE FRONTEND
-    private static final String BASE_URL = "http://192.168.0.180/SIPORAWEB/frontend/";
+    private static final String BASE_URL = "http://10.46.104.1/SIPORAWEB/frontend/";
     private static final String URL_GET_PROFILE = BASE_URL + "get_profile.php";
     private static final String URL_UPDATE_PROFILE = BASE_URL + "update_profile.php";
 
@@ -148,7 +148,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     private boolean checkStoragePermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            // Android 13+ (API 33+)
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES)
                     != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this,
@@ -331,7 +330,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
         String[] urlsToTry = {
                 URL_GET_PROFILE + "?id_user=" + userId,
-                "http://192.168.0.180/SIPORAWEB/frontend/get_profile.php?id_user=" + userId,
+                "http://10.46.104.1/SIPORAWEB/frontend/get_profile.php?id_user=" + userId,
         };
 
         tryLoadProfileData(urlsToTry, 0);

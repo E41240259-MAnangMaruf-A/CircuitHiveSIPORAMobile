@@ -62,18 +62,12 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.VH> {
 
         String text = data.get(position);
         holder.tvRecent.setText(text);
-
-        // Klik item utama
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) listener.onItemClick(text);
         });
-
-        // Klik icon search
         holder.ivSearch.setOnClickListener(v -> {
             if (listener != null) listener.onItemClick(text);
         });
-
-        // Delete
         holder.ivDelete.setOnClickListener(v -> {
             if (listener != null) listener.onDelete(text, holder.getAdapterPosition());
         });

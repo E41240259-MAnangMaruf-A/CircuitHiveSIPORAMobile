@@ -190,7 +190,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
     }
 
     private void logDownload(int dokumenId, int userId) {
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/log_download.php";
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/log_download.php";
 
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {
@@ -224,8 +224,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
             tvStatus = itemView.findViewById(R.id.tvStatus);
             btnDownload = itemView.findViewById(R.id.btnDownload);
             btnLihat = itemView.findViewById(R.id.btnLihat);
-
-            // TextView tambahan sesuai prototype
             tvUploader = itemView.findViewById(R.id.tvUploader);
             tvJurusan = itemView.findViewById(R.id.tvJurusan);
             tvTahun = itemView.findViewById(R.id.tvTahun);

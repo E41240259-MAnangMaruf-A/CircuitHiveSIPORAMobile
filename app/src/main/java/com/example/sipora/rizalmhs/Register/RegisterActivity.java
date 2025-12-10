@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView tvLogin;
     private CheckBox cbAgree;
 
-    private static final String URL_REGISTER = "http://192.168.0.180/SIPORAWEB/frontend/register.php";
+    private static final String URL_REGISTER = "http://10.46.104.1/SIPORAWEB/frontend/register.php";
 
     private boolean isPasswordVisible = false;
     private boolean isConfirmPasswordVisible = false;

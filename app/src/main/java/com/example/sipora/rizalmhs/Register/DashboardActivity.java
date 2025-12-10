@@ -39,31 +39,21 @@ import java.util.ArrayList;
 
 public class DashboardActivity extends AppCompatActivity implements DokumenAdapter.OnItemClickListener {
 
-    // Header Views
     private ImageView btnProfile, btnNotif;
+    private ImageView btnHelp;
     private TextView tvSipora, tvWelcome, tvSubtitle;
-
-    // Main Content Views
     private Button btnUpload;
     private EditText etSearch;
-
-    // Statistik Views
     private View statTotalDokumen, statDownload;
     private TextView tvTotalDokumen, tvDownloadBulanIni;
-
-    // Dokumen Views
     private TextView tvDokumen, tvLihatSemua;
     private RecyclerView recyclerDokumen;
     private DokumenAdapter adapter;
-
-    // Bottom Navigation
     private BottomNavigationView bottomNavigation;
-
-    // Data
     private ArrayList<DokumenModel> originalList = new ArrayList<>();
 
     private static final String URL_DASHBOARD =
-            "http://192.168.0.180/SIPORAWEB/frontend/dashboard_mobile.php";
+            "http://10.46.104.1/SIPORAWEB/frontend/dashboard_mobile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +86,8 @@ public class DashboardActivity extends AppCompatActivity implements DokumenAdapt
 
         setupProfileButton();
         setupNotificationButton();
+        setupHelpButton();
+
         setupHeader();
         setupUploadButton();
         setupStatistikCards();
@@ -132,6 +124,8 @@ public class DashboardActivity extends AppCompatActivity implements DokumenAdapt
         try {
             btnProfile = findViewById(R.id.btnProfile);
             btnNotif = findViewById(R.id.btnNotif);
+            btnHelp = findViewById(R.id.btnHelp);
+
             tvSipora = findViewById(R.id.tvSipora);
 
             tvWelcome = findViewById(R.id.tvWelcome);
@@ -193,6 +187,16 @@ public class DashboardActivity extends AppCompatActivity implements DokumenAdapt
         }
     }
 
+    private void setupHelpButton() {
+        if (btnHelp != null) {
+            btnHelp.setOnClickListener(v -> {
+                Intent i = new Intent(DashboardActivity.this, HelpActivity.class);
+                startActivity(i);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            });
+        }
+    }
+
     private void setupHeader() {
         if (tvWelcome == null || tvSubtitle == null) {
             Log.e("DASHBOARD_HEADER", "Header views are null");
@@ -205,6 +209,7 @@ public class DashboardActivity extends AppCompatActivity implements DokumenAdapt
 
         Log.d("DASHBOARD_HEADER", "Data session - Nama: " + userName +
                 ", Email: " + userEmail + ", NIM: " + userNIM);
+
         if (userName == null || userName.trim().isEmpty() || userName.equals("Pengguna")) {
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
@@ -229,7 +234,6 @@ public class DashboardActivity extends AppCompatActivity implements DokumenAdapt
         if (userName != null && !userName.trim().isEmpty() && !userName.equals("Pengguna")) {
             tvWelcome.setText("Selamat Datang, " + userName + "!");
         } else {
-            // Jika masih tidak ada nama, ambil dari email
             if (userEmail != null && !userEmail.isEmpty()) {
                 String emailUsername = userEmail.split("@")[0];
                 tvWelcome.setText("Selamat Datang, " + emailUsername + "!");
@@ -323,13 +327,14 @@ public class DashboardActivity extends AppCompatActivity implements DokumenAdapt
     private void setupRecyclerView() {
         if (recyclerDokumen != null) {
             recyclerDokumen.setLayoutManager(new LinearLayoutManager(this));
-            adapter = new DokumenAdapter(this, originalList, this); // Pass 'this' sebagai listener
+            adapter = new DokumenAdapter(this, originalList, this);
             recyclerDokumen.setAdapter(adapter);
             Log.d("DASHBOARD", "RecyclerView setup completed");
         } else {
             Log.e("DASHBOARD", "RecyclerView is null!");
         }
     }
+
     @Override
     public void onDownloadClick(DokumenModel dokumen) {
         if (dokumen != null) {
@@ -347,6 +352,7 @@ public class DashboardActivity extends AppCompatActivity implements DokumenAdapt
             Log.e("DASHBOARD", "onViewClick: DokumenModel is null");
         }
     }
+
     private void handleDownloadFromDashboard(DokumenModel dokumen) {
         if (dokumen == null) return;
 
@@ -360,12 +366,14 @@ public class DashboardActivity extends AppCompatActivity implements DokumenAdapt
         openDocumentFile(dokumen.getFileUrl());
         Toast.makeText(this, "Mengunduh " + fileName, Toast.LENGTH_SHORT).show();
     }
+
     private void handleViewDocument(DokumenModel dokumen) {
         if (dokumen == null) return;
 
         Log.d("DASHBOARD", "View dokumen: " + dokumen.getJudul());
         openDocumentFile(dokumen.getFileUrl());
     }
+
     private void logDownloadToServer(int dokumenId) {
         int userId = UserSession.getUserId(this);
 
@@ -374,7 +382,7 @@ public class DashboardActivity extends AppCompatActivity implements DokumenAdapt
             return;
         }
 
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/log_download.php";
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/log_download.php";
 
         StringRequest req = new StringRequest(Request.Method.POST, url,
                 response -> Log.d("DASHBOARD_LOG", "Log download berhasil: " + response),
@@ -391,6 +399,7 @@ public class DashboardActivity extends AppCompatActivity implements DokumenAdapt
 
         Volley.newRequestQueue(this).add(req);
     }
+
     private void openDocumentFile(String fileUrl) {
         if (fileUrl == null || fileUrl.isEmpty()) {
             Toast.makeText(this, "File URL tidak valid", Toast.LENGTH_SHORT).show();
@@ -652,8 +661,8 @@ public class DashboardActivity extends AppCompatActivity implements DokumenAdapt
         super.onResume();
 
         if (UserSession.isLoggedIn(this)) {
-            setupHeader(); // Refresh nama user dari session
-            loadDashboard(); // Refresh data dari server
+            setupHeader();
+            loadDashboard();
         } else {
             redirectToLogin();
         }

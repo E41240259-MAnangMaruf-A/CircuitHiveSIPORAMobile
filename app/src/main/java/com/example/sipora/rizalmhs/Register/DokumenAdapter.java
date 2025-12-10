@@ -148,7 +148,7 @@ public class DokumenAdapter extends RecyclerView.Adapter<DokumenAdapter.ViewHold
     }
 
     private void logDownload(int dokumenId, int userId) {
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/log_download.php";
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/log_download.php";
 
         Log.d("DOWNLOAD_LOG", "Kirim log: dokumen_id=" + dokumenId + ", user_id=" + userId);
 

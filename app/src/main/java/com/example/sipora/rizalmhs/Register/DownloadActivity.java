@@ -47,7 +47,7 @@ public class DownloadActivity extends AppCompatActivity {
 
     String currentTab = "all";
 
-    private static final String BASE_URL = "http://192.168.0.180/SIPORAWEB/frontend/get_download.php?user_id=";
+    private static final String BASE_URL = "http://10.46.104.1/SIPORAWEB/frontend/get_download.php?user_id=";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,7 +206,6 @@ public class DownloadActivity extends AppCompatActivity {
         recycler.setAdapter(new DownloadAdapter(data, new DownloadAdapter.OnActionListener() {
             @Override
             public void onOpen(DownloadModel m) {
-                // HANYA BUKA FILE, TANPA NOTIFIKASI
                 openFileWithoutNotification(m);
             }
 
@@ -310,7 +309,7 @@ public class DownloadActivity extends AppCompatActivity {
     }
 
     private void deleteFromServer(int fileId, String fileName) {
-        String deleteUrl = "http://192.168.0.180/SIPORAWEB/frontend/delete_download.php?id=" + fileId;
+        String deleteUrl = "http://10.46.104.1/SIPORAWEB/frontend/delete_download.php?id=" + fileId;
 
         Log.d(TAG, "Delete URL: " + deleteUrl);
 
@@ -335,7 +334,6 @@ public class DownloadActivity extends AppCompatActivity {
                 error -> {
                     Log.e(TAG, "Delete request error: " + error.toString());
                     Toast.makeText(this, "Gagal terhubung ke server", Toast.LENGTH_SHORT).show();
-                    // Tetap refresh UI meski error
                     loadDownloads();
                 });
 

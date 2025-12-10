@@ -45,10 +45,10 @@ public class BrowseActivity extends AppCompatActivity {
 
     private TextView textJumlahDokumen;
 
-    private static final String URL_BROWSE = "http://192.168.0.180/SIPORAWEB/frontend/browse.php";
-    private static final String URL_TEMA = "http://192.168.0.180/SIPORAWEB/frontend/get_tema.php";
-    private static final String URL_TAHUN = "http://192.168.0.180/SIPORAWEB/frontend/get_tahun.php";
-    private static final String URL_JURUSAN = "http://192.168.0.180/SIPORAWEB/frontend/get_jurusan.php";
+    private static final String URL_BROWSE = "http://10.46.104.1/SIPORAWEB/frontend/browse.php";
+    private static final String URL_TEMA = "http://10.46.104.1/SIPORAWEB/frontend/get_tema.php";
+    private static final String URL_TAHUN = "http://10.46.104.1/SIPORAWEB/frontend/get_tahun.php";
+    private static final String URL_JURUSAN = "http://10.46.104.1/SIPORAWEB/frontend/get_jurusan.php";
 
     String currentTema = "";
     String currentTahun = "";
@@ -302,7 +302,7 @@ public class BrowseActivity extends AppCompatActivity {
         loadDocuments();
     }
     public void sendNotif(int userId, String judul, String isi) {
-        String url = "http://10.10.4.51/SIPORAWEB/frontend/insert_notifikasi.php";
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/insert_notifikasi.php";
 
         StringRequest req = new StringRequest(Request.Method.POST, url,
                 r -> Log.d("NOTIF","Sent"),

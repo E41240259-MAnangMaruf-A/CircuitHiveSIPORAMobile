@@ -171,7 +171,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private void loadRecentTrending() {
 
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/recent_search.php?user_id="
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/recent_search.php?user_id="
                 + UserSession.getUserId(this);
 
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -180,8 +180,6 @@ public class SearchActivity extends AppCompatActivity {
                 response -> {
                     try {
                         if (!response.getString("status").equals("success")) return;
-
-                        // RECENT
                         JSONArray recentArr = response.getJSONArray("recent");
                         List<String> recentList = new ArrayList<>();
                         for (int i = 0; i < Math.min(5, recentArr.length()); i++) {
@@ -245,7 +243,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void deleteRecentItem(String keyword) {
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/delete_recent_item.php";
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/delete_recent_item.php";
 
         StringRequest req = new StringRequest(
                 Request.Method.POST,
@@ -266,7 +264,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void saveRecent(String keyword) {
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/save_recent.php";
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/save_recent.php";
 
         Log.d("DEBUG_SEARCH", "Saving keyword: " + keyword);
 
@@ -289,7 +287,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void clearRecentFromServer() {
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/clear_recent.php"
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/clear_recent.php"
                 + "?user_id=" + UserSession.getUserId(this);
 
         Volley.newRequestQueue(this).add(new JsonObjectRequest(Request.Method.GET, url, null,
@@ -298,7 +296,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private void searchDocument(String query) {
 
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/search_mobile.php?q=" + query;
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/search_mobile.php?q=" + query;
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -361,7 +359,7 @@ public class SearchActivity extends AppCompatActivity {
 
 
     private void sendNotif(String judul, String isi) {
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/insert_notifikasi.php";
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/insert_notifikasi.php";
 
         StringRequest req = new StringRequest(
                 Request.Method.POST,

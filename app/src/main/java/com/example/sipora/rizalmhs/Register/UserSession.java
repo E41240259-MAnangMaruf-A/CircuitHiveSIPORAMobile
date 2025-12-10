@@ -25,7 +25,7 @@ public class UserSession {
         editor.putString(KEY_USERNAME, username);
         editor.putString(KEY_EMAIL, email);
         editor.putString(KEY_NIM, nim);
-        editor.putString(KEY_ROLE, role); // Simpan role
+        editor.putString(KEY_ROLE, role);
 
         editor.apply();
 

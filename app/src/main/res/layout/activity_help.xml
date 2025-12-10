@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F5F7FA">
+
+    <TextView
+        android:id="@+id/tvTitleHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pusat Bantuan"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="#1A237E"
+        android:layout_marginBottom="6dp" />
+
+    <TextView
+        android:id="@+id/tvDescHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Panduan penggunaan aplikasi SIPORA:"
+        android:textSize="15sp"
+        android:textColor="#455A64"
+        android:layout_marginBottom="12dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="5dp"
+        android:backgroundTint="#FFFFFF">
+
+        <ExpandableListView
+            android:id="@+id/expandHelp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="0dp"
+            android:groupIndicator="@null"
+            android:padding="12dp"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginHorizontal="12dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="5dp"
+        android:backgroundTint="#FFFFFF"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvContactTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Person"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#1A237E"
+                android:layout_marginBottom="16dp"
+                android:paddingLeft="6dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:paddingLeft="6dp">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/ic_phone"
+                    app:tint="#1E88E5"
+                    android:layout_marginEnd="14dp" />
+
+                <TextView
+                    android:id="@+id/tvWhatsAppMudafiq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bapak Mudafiq : +62 856-4956-5379"
+                    android:textColor="#1E88E5"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingVertical="10dp"
+                android:paddingLeft="6dp">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/ic_phone"
+                    app:tint="#1E88E5"
+                    android:layout_marginEnd="14dp" />
+
+                <TextView
+                    android:id="@+id/tvWhatsAppAlyvia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ratu Alyvia : +62 895-2773-1917"
+                    android:textColor="#1E88E5"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

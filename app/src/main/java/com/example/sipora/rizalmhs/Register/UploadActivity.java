@@ -362,7 +362,7 @@ public class UploadActivity extends AppCompatActivity {
                 Toast.makeText(this, "Tidak dapat membaca file utama", Toast.LENGTH_SHORT).show();
                 return;
             }
-            String url = "http://192.168.0.180/SIPORAWEB/frontend/upload_mobile.php";
+            String url = "http://10.46.104.1/SIPORAWEB/frontend/upload_mobile.php";
 
             VolleyMultipartRequest request = new VolleyMultipartRequest(
                     Request.Method.POST,
@@ -515,7 +515,7 @@ public class UploadActivity extends AppCompatActivity {
         }
     }
     private void sendNotif(int userId, String judul, String isi) {
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/insert_notifikasi.php";
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/insert_notifikasi.php";
 
         StringRequest req = new StringRequest(Request.Method.POST, url,
                 r -> Log.d("NOTIF","Sent"),
@@ -539,8 +539,6 @@ public class UploadActivity extends AppCompatActivity {
         fileUriTurnitin = null;
         findViewById(R.id.layoutFileInfoUtama).setVisibility(View.GONE);
         findViewById(R.id.layoutFileInfoTurnitin).setVisibility(View.GONE);
-
-        // Reset form persentase Turnitin
         if (layoutPresentaseKemiripan != null) {
             layoutPresentaseKemiripan.setVisibility(View.GONE);
         }

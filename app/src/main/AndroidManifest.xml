@@ -117,6 +117,16 @@
             android:label="Pencarian"
             android:screenOrientation="portrait" />
 
+        <!-- ===================================================== -->
+        <!-- ==============  >>> HELP ACTIVITY <<<  ============== -->
+        <!-- ===================================================== -->
+        <activity
+            android:name=".rizalmhs.Register.HelpActivity"
+            android:exported="false"
+            android:label="Pusat Bantuan"
+            android:screenOrientation="portrait" />
+        <!-- ===================================================== -->
+
     </application>
 
 </manifest>

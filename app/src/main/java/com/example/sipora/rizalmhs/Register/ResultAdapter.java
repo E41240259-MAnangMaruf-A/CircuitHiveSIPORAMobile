@@ -45,10 +45,6 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.Holder> {
     public void onBindViewHolder(@NonNull Holder h, int pos) {
 
         SearchResult d = list.get(pos);
-
-        // ==========================
-        // SET TEXT
-        // ==========================
         h.tvTitle.setText(d.judul);
         h.tvDesc.setText(d.abstrak != null ? d.abstrak : "-");
         h.tvUploader.setText(d.uploader != null ? d.uploader : "Unknown");
@@ -89,7 +85,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.Holder> {
     }
     private void logDownload(int dokumenId, int userId) {
 
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/log_download.php";
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/log_download.php";
 
         StringRequest req = new StringRequest(
                 Request.Method.POST,
@@ -109,10 +105,6 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.Holder> {
         Volley.newRequestQueue(context).add(req);
     }
 
-
-    // ==========================================================
-    // HOLDER
-    // ==========================================================
     public static class Holder extends RecyclerView.ViewHolder {
 
         TextView tvTitle, tvDesc, tvUploader, tvTema, tvJurusan,

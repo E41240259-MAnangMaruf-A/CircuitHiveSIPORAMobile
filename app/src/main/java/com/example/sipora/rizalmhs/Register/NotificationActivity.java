@@ -46,7 +46,7 @@ public class NotificationActivity extends AppCompatActivity {
 
     private void loadNotifikasi() {
         int userId = UserSession.getUserId(this);
-        String url = "http://192.168.0.180/SIPORAWEB/frontend/get_notifikasi.php?user_id=" + userId;
+        String url = "http://10.46.104.1/SIPORAWEB/frontend/get_notifikasi.php?user_id=" + userId;
 
         StringRequest req = new StringRequest(url,
                 res -> {

@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp"
+            android:background="#2196F3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bantuan &amp; Panduan"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Repository Akademik POLIJE"
+                android:textColor="#E3F2FD"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+
+        <!-- =============================================== -->
+        <!-- TEMPLATE SECTION (Semua Section Ikuti Format Ini) -->
+        <!-- =============================================== -->
+
+        <!-- DASHBOARD -->
+        <LinearLayout
+            android:id="@+id/sectionDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:elevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🏠 Dashboard"
+                    android:textColor="#2196F3"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/iconDashboard"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text="▼"
+                    android:textColor="#555"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contentDashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Menampilkan statistik dokumen"
+                    android:textColor="#666"
+                    android:paddingVertical="4dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Total download bulan ini"
+                    android:textColor="#666"
+                    android:paddingVertical="4dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Dokumen terbaru"
+                    android:textColor="#666"
+                    android:paddingVertical="4dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- UPLOAD -->
+        <LinearLayout
+            android:id="@+id/sectionUpload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:elevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="📤 Unggah Dokumen"
+                    android:textColor="#4CAF50"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/iconUpload"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text="▼"
+                    android:textColor="#555"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contentUpload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Unggah PDF/DOC maksimal 20MB"
+                    android:textColor="#666"
+                    android:paddingVertical="4dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Format: Skripsi, Laporan, Jurnal"
+                    android:textColor="#666"
+                    android:paddingVertical="4dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- BROWSE -->
+        <LinearLayout
+            android:id="@+id/sectionBrowse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:elevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="📂 Telusuri"
+                    android:textColor="#FF9800"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/iconBrowse"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text="▼"
+                    android:textColor="#555"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contentBrowse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Telusuri dokumen berdasarkan jurusan"
+                    android:textColor="#666"
+                    android:paddingVertical="4dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Filter berdasarkan kategori"
+                    android:textColor="#666"
+                    android:paddingVertical="4dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- SEARCH -->
+        <LinearLayout
+            android:id="@+id/sectionSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:elevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="🔍 Cari"
+                    android:textColor="#9C27B0"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/iconSearch"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text="▼"
+                    android:textColor="#555"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contentSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Pencarian berdasarkan judul, abstrak"
+                    android:textColor="#666"
+                    android:paddingVertical="4dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- DOWNLOAD -->
+        <LinearLayout
+            android:id="@+id/sectionDownload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/white"
+            android:padding="12dp"
+            android:elevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center_vertical"
+                android:foreground="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="📥 Download"
+                    android:textColor="#F44336"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/iconDownload"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text="▼"
+                    android:textColor="#555"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contentDownload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="• Melihat riwayat download pribadi"
+                    android:textColor="#666"
+                    android:paddingVertical="4dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- CONTACT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#E8F5E9"
+            android:layout_marginTop="20dp"
+            android:elevation="2dp"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💬 Bantuan Cepat"
+                android:gravity="center"
+                android:textColor="#2196F3"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnWhatsApp"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:text="Hubungi via WhatsApp"
+                android:backgroundTint="#25D366"
+                android:textColor="@android:color/white"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:layout_marginTop="16dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

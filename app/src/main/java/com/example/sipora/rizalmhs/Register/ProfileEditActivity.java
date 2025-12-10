@@ -22,7 +22,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     private Button btnSave, btnCancel;
 
     private static final String URL_EDIT =
-            "http://192.168.0.180/SIPORAWEB/frontend/update_profile.php";
+            "http://10.46.104.1/SIPORAWEB/frontend/update_profile.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
